@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21311E5B1DC7221300B19D94 /* InstagramVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21311E5A1DC7221300B19D94 /* InstagramVC.swift */; };
+		21311E601DC745CD00B19D94 /* TumblrVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21311E5F1DC745CD00B19D94 /* TumblrVC.swift */; };
 		4FB3FA486A91811ED5027F95 /* Pods_Share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C6A4ECB66C0A0C0A884BF9 /* Pods_Share.framework */; };
 		A821675D1DB490D000836A0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A821675C1DB490D000836A0C /* AppDelegate.swift */; };
 		A82167621DB490D000836A0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82167601DB490D000836A0C /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		21311E5A1DC7221300B19D94 /* InstagramVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramVC.swift; sourceTree = "<group>"; };
+		21311E5F1DC745CD00B19D94 /* TumblrVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrVC.swift; sourceTree = "<group>"; };
 		30C6A4ECB66C0A0C0A884BF9 /* Pods_Share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82167591DB490D000836A0C /* Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A821675C1DB490D000836A0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21311E571DC7218C00B19D94 /* Instagram */ = {
+			isa = PBXGroup;
+			children = (
+				21311E5A1DC7221300B19D94 /* InstagramVC.swift */,
+			);
+			path = Instagram;
+			sourceTree = "<group>";
+		};
+		21311E5C1DC7266C00B19D94 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		21311E5E1DC7458100B19D94 /* Tumblr */ = {
+			isa = PBXGroup;
+			children = (
+				21311E5F1DC745CD00B19D94 /* TumblrVC.swift */,
+			);
+			path = Tumblr;
+			sourceTree = "<group>";
+		};
 		6206E2DF3D58D14E30A2F59E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +174,7 @@
 		A821676E1DB4918600836A0C /* Everything */ = {
 			isa = PBXGroup;
 			children = (
+				21311E5C1DC7266C00B19D94 /* Misc */,
 				A82E93451DB8C77D008E012A /* SwiftyJSON */,
 				A821676F1DB4918600836A0C /* AppDelegate */,
 				A82167701DB4918600836A0C /* MVC */,
@@ -253,13 +281,13 @@
 		A821677A1DB4972B00836A0C /* MainVC */ = {
 			isa = PBXGroup;
 			children = (
+				A82167871DB4989C00836A0C /* MainVC.swift */,
+				21311E5E1DC7458100B19D94 /* Tumblr */,
+				21311E571DC7218C00B19D94 /* Instagram */,
 				A89700651DB7819C00B97BC3 /* Twitter */,
 				A89700601DB77E2800B97BC3 /* Facebook */,
-				A82167871DB4989C00836A0C /* MainVC.swift */,
 				A8EC72301DB4F66100CB5A9C /* SnapChatCell */,
-				A8EC722B1DB4F64900CB5A9C /* TumblrCell */,
 				A8EC722C1DB4F64900CB5A9C /* VineCell */,
-				A8EC722D1DB4F64900CB5A9C /* InstaCell */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -290,25 +318,11 @@
 			path = Twitter;
 			sourceTree = "<group>";
 		};
-		A8EC722B1DB4F64900CB5A9C /* TumblrCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TumblrCell;
-			sourceTree = "<group>";
-		};
 		A8EC722C1DB4F64900CB5A9C /* VineCell */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = VineCell;
-			sourceTree = "<group>";
-		};
-		A8EC722D1DB4F64900CB5A9C /* InstaCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = InstaCell;
 			sourceTree = "<group>";
 		};
 		A8EC72301DB4F66100CB5A9C /* SnapChatCell */ = {
@@ -468,6 +482,7 @@
 				A82167841DB4988000836A0C /* SearchVC.swift in Sources */,
 				A8A7E7501DB5FB7E00D78A5E /* FacebookPostModel.swift in Sources */,
 				A82167801DB4976400836A0C /* FilterVC.swift in Sources */,
+				21311E5B1DC7221300B19D94 /* InstagramVC.swift in Sources */,
 				A821677E1DB4975300836A0C /* SignupVC.swift in Sources */,
 				A89700641DB77E3F00B97BC3 /* FacebookVC.swift in Sources */,
 				A821677C1DB4974300836A0C /* LoginVC.swift in Sources */,
@@ -476,6 +491,7 @@
 				A82167861DB4988F00836A0C /* IntegrateVC.swift in Sources */,
 				A89700671DB7822800B97BC3 /* TwitterVC.swift in Sources */,
 				A82E934A1DB8C77D008E012A /* SwiftyJSON.swift in Sources */,
+				21311E601DC745CD00B19D94 /* TumblrVC.swift in Sources */,
 				A82167821DB4977200836A0C /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
