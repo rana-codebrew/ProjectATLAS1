@@ -8,7 +8,6 @@
 
 import UIKit
 import Fabric
-import TwitterKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool
     {
-              Fabric.with([Twitter.self])
         return true
     }
     

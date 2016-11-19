@@ -1,5 +1,5 @@
 //
-//  FilterVC.swift
+//  SearchVC.swift
 //  Share
 //
 //  Created by Aseem 7 on 17/10/16.
@@ -8,15 +8,18 @@
 
 import UIKit
 
-class FilterVC: UIViewController {
+class SearchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Do any additional setup after loading the view.
     }
-
 
     @IBAction func btnBackClicked(_ sender: Any) {
+        
         _ = navigationController?.popViewController(animated: true)
+        
     }
+   
 }
