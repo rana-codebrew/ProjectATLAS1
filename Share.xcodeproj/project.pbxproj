@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2100653F1DE2DA2800F20880 /* SettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100653E1DE2DA2800F20880 /* SettingsVM.swift */; };
+		210065411DE319F200F20880 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210065401DE319F200F20880 /* PieChartView.swift */; };
 		2123BD9F1DDAC9EE00A0D5DD /* SignupVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BD9E1DDAC9EE00A0D5DD /* SignupVM.swift */; };
 		216C90B61DD99ED60032A425 /* IntegrateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90A01DD99ED60032A425 /* IntegrateVC.swift */; };
 		216C90B71DD99ED60032A425 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90A21DD99ED60032A425 /* LoginVC.swift */; };
@@ -18,12 +20,14 @@
 		216C90BF1DD99F2A0032A425 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90BE1DD99F2A0032A425 /* LoginVM.swift */; };
 		216C90C41DD9CEE30032A425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 216C90C21DD9CEE30032A425 /* Main.storyboard */; };
 		21CCD2151DE04FB100171436 /* UIViewController+presentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCD2141DE04FB100171436 /* UIViewController+presentError.swift */; };
+		21DF069A1DE40776009BC082 /* Piechart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF06991DE40776009BC082 /* Piechart.swift */; };
 		21F91B861DDF168300A96D90 /* UserTrackerModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F91B851DDF168300A96D90 /* UserTrackerModal.swift */; };
 		21F956961DDD834500B4171D /* ShareEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F956951DDD834500B4171D /* ShareEndpoint.swift */; };
 		21F9569A1DDD8C7100B4171D /* UserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F956991DDD8C7100B4171D /* UserMapper.swift */; };
 		21FDEC381DC86D70006AE5A6 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FDEC371DC86D70006AE5A6 /* UIView+Additions.swift */; };
 		21FDEC3A1DC8727A006AE5A6 /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FDEC391DC8727A006AE5A6 /* textField.swift */; };
 		4FB3FA486A91811ED5027F95 /* Pods_Share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C6A4ECB66C0A0C0A884BF9 /* Pods_Share.framework */; };
+		55BF5DCF1DE220FA00D84D74 /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF5DCE1DE220FA00D84D74 /* MainVM.swift */; };
 		A821675D1DB490D000836A0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A821675C1DB490D000836A0C /* AppDelegate.swift */; };
 		A82167641DB490D000836A0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A82167631DB490D000836A0C /* Assets.xcassets */; };
 		A82167671DB490D000836A0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82167651DB490D000836A0C /* LaunchScreen.storyboard */; };
@@ -31,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2100653E1DE2DA2800F20880 /* SettingsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVM.swift; sourceTree = "<group>"; };
+		210065401DE319F200F20880 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		2123BD9E1DDAC9EE00A0D5DD /* SignupVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVM.swift; sourceTree = "<group>"; };
 		216C90A01DD99ED60032A425 /* IntegrateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrateVC.swift; sourceTree = "<group>"; };
 		216C90A21DD99ED60032A425 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -42,12 +48,15 @@
 		216C90BE1DD99F2A0032A425 /* LoginVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		216C90C31DD9CEE30032A425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21CCD2141DE04FB100171436 /* UIViewController+presentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+presentError.swift"; sourceTree = "<group>"; };
+		21DF06991DE40776009BC082 /* Piechart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piechart.swift; sourceTree = "<group>"; };
+		21DF069D1DE41232009BC082 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		21F91B851DDF168300A96D90 /* UserTrackerModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackerModal.swift; sourceTree = "<group>"; };
 		21F956951DDD834500B4171D /* ShareEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareEndpoint.swift; sourceTree = "<group>"; };
 		21F956991DDD8C7100B4171D /* UserMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMapper.swift; sourceTree = "<group>"; };
 		21FDEC371DC86D70006AE5A6 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		21FDEC391DC8727A006AE5A6 /* textField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = textField.swift; sourceTree = "<group>"; };
 		30C6A4ECB66C0A0C0A884BF9 /* Pods_Share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55BF5DCE1DE220FA00D84D74 /* MainVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
 		A82167591DB490D000836A0C /* Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Share.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A821675C1DB490D000836A0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../AppDelegate.swift; sourceTree = "<group>"; };
 		A82167631DB490D000836A0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2100653D1DE2D98300F20880 /* SettingsViewModal */ = {
+			isa = PBXGroup;
+			children = (
+				2100653E1DE2DA2800F20880 /* SettingsVM.swift */,
+			);
+			path = SettingsViewModal;
+			sourceTree = "<group>";
+		};
 		2123BD9D1DDAC9D900A0D5DD /* SignupViewModal */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +108,8 @@
 		21311E5C1DC7266C00B19D94 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				21DF06991DE40776009BC082 /* Piechart.swift */,
+				210065401DE319F200F20880 /* PieChartView.swift */,
 				21CCD2141DE04FB100171436 /* UIViewController+presentError.swift */,
 				21FDEC371DC86D70006AE5A6 /* UIView+Additions.swift */,
 				21FDEC391DC8727A006AE5A6 /* textField.swift */,
@@ -149,58 +168,10 @@
 		216C90A31DD99ED60032A425 /* MainVC */ = {
 			isa = PBXGroup;
 			children = (
-				216C90A41DD99ED60032A425 /* Facebook */,
-				216C90A51DD99ED60032A425 /* Instagram */,
 				216C90A61DD99ED60032A425 /* MainVC.swift */,
-				216C90A71DD99ED60032A425 /* Pinterest */,
-				216C90A81DD99ED60032A425 /* Tumblr */,
-				216C90A91DD99ED60032A425 /* Twitter */,
-				216C90AA1DD99ED60032A425 /* Vine */,
 				216C90AB1DD99ED60032A425 /* WebView */,
 			);
 			path = MainVC;
-			sourceTree = "<group>";
-		};
-		216C90A41DD99ED60032A425 /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Facebook;
-			sourceTree = "<group>";
-		};
-		216C90A51DD99ED60032A425 /* Instagram */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Instagram;
-			sourceTree = "<group>";
-		};
-		216C90A71DD99ED60032A425 /* Pinterest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pinterest;
-			sourceTree = "<group>";
-		};
-		216C90A81DD99ED60032A425 /* Tumblr */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tumblr;
-			sourceTree = "<group>";
-		};
-		216C90A91DD99ED60032A425 /* Twitter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Twitter;
-			sourceTree = "<group>";
-		};
-		216C90AA1DD99ED60032A425 /* Vine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Vine;
 			sourceTree = "<group>";
 		};
 		216C90AB1DD99ED60032A425 /* WebView */ = {
@@ -238,6 +209,8 @@
 		216C90B31DD99ED60032A425 /* ViewModals */ = {
 			isa = PBXGroup;
 			children = (
+				2100653D1DE2D98300F20880 /* SettingsViewModal */,
+				55BF5DCD1DE2202E00D84D74 /* MainViewModal */,
 				2123BD9D1DDAC9D900A0D5DD /* SignupViewModal */,
 				216C90BD1DD99F070032A425 /* LoginViewModal */,
 			);
@@ -284,6 +257,14 @@
 			path = UserModal;
 			sourceTree = "<group>";
 		};
+		55BF5DCD1DE2202E00D84D74 /* MainViewModal */ = {
+			isa = PBXGroup;
+			children = (
+				55BF5DCE1DE220FA00D84D74 /* MainVM.swift */,
+			);
+			path = MainViewModal;
+			sourceTree = "<group>";
+		};
 		6206E2DF3D58D14E30A2F59E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +293,7 @@
 		A82167501DB490CF00836A0C = {
 			isa = PBXGroup;
 			children = (
+				21DF069D1DE41232009BC082 /* BridgingHeader.h */,
 				A821675B1DB490D000836A0C /* Share */,
 				A821675A1DB490D000836A0C /* Products */,
 				924014F3701DB3943CCF78AA /* Frameworks */,
@@ -404,7 +386,7 @@
 				TargetAttributes = {
 					A82167581DB490CF00836A0C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 59C4KPXD52;
+						DevelopmentTeam = M55AA36S4S;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -474,7 +456,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EFB192D67EBB498CBB1AB9BF /* [CP] Embed Pods Frameworks */ = {
@@ -499,6 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2100653F1DE2DA2800F20880 /* SettingsVM.swift in Sources */,
 				21F956961DDD834500B4171D /* ShareEndpoint.swift in Sources */,
 				2123BD9F1DDAC9EE00A0D5DD /* SignupVM.swift in Sources */,
 				216C90BC1DD99ED60032A425 /* SignupVC.swift in Sources */,
@@ -512,9 +495,12 @@
 				21CCD2151DE04FB100171436 /* UIViewController+presentError.swift in Sources */,
 				216C90B71DD99ED60032A425 /* LoginVC.swift in Sources */,
 				21FDEC381DC86D70006AE5A6 /* UIView+Additions.swift in Sources */,
+				55BF5DCF1DE220FA00D84D74 /* MainVM.swift in Sources */,
 				216C90BA1DD99ED60032A425 /* SearchVC.swift in Sources */,
+				210065411DE319F200F20880 /* PieChartView.swift in Sources */,
 				216C90B81DD99ED60032A425 /* MainVC.swift in Sources */,
 				A821675D1DB490D000836A0C /* AppDelegate.swift in Sources */,
+				21DF069A1DE40776009BC082 /* Piechart.swift in Sources */,
 				A82E934A1DB8C77D008E012A /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,10 +625,11 @@
 			baseConfigurationReference = B30B44A3EC7C1A429CB56C07 /* Pods-Share.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 59C4KPXD52;
+				DEVELOPMENT_TEAM = M55AA36S4S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -652,6 +639,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dr.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -661,9 +649,10 @@
 			baseConfigurationReference = DB87CD278D7865D989324AB6 /* Pods-Share.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
-				DEVELOPMENT_TEAM = 59C4KPXD52;
+				DEVELOPMENT_TEAM = M55AA36S4S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -673,6 +662,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dr.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

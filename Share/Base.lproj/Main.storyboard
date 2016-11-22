@@ -68,6 +68,12 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                 <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPX-72-wF3">
@@ -87,6 +93,12 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                 <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -215,10 +227,10 @@
                         <outlet property="btnRemember" destination="kCj-ex-cEX" id="c97-OZ-Ho5"/>
                         <outlet property="btnResetPassword" destination="171-gF-qeF" id="HiI-oz-84B"/>
                         <outlet property="responseTxt" destination="ypu-gF-rad" id="Zj9-Mq-u9x"/>
-                        <outlet property="txtEmail" destination="KBG-PJ-jgc" id="XVE-TJ-5ZM"/>
-                        <outlet property="txtPassword" destination="yHm-Eq-6xV" id="AC7-ab-3dE"/>
+                        <outletCollection property="tfCollection" destination="KBG-PJ-jgc" collectionClass="NSMutableArray" id="ZPQ-Qw-4oN"/>
+                        <outletCollection property="tfCollection" destination="yHm-Eq-6xV" collectionClass="NSMutableArray" id="PXt-iE-oLa"/>
                         <segue destination="UYh-1c-vNx" kind="show" identifier="segueCreateAcc" id="BOg-qS-t5C"/>
-                        <segue destination="Osl-m2-3D5" kind="show" identifier="segueMain" id="VTb-Nz-Hht"/>
+                        <segue destination="Osl-m2-3D5" kind="show" identifier="segueMain" animates="NO" id="VTb-Nz-Hht"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZR6-0r-jeb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,6 +284,12 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HOM-sk-eAc">
@@ -290,6 +308,12 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -311,6 +335,12 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
@@ -461,11 +491,6 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RH4-I9-Fcp">
                                                 <state key="normal" image="ic_logo_red"/>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_progress_circle" translatesAutoresizingMaskIntoConstraints="NO" id="6bp-CG-xf6">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="112" id="3Dl-1F-ij6"/>
-                                                </constraints>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin_User1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCH-NY-hwe">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21.5" id="i3c-28-rHO"/>
@@ -484,9 +509,6 @@
                                                                     <constraint firstAttribute="width" constant="24" id="uay-Li-HBl"/>
                                                                 </constraints>
                                                                 <state key="normal" image="ic_Facebook"/>
-                                                                <connections>
-                                                                    <action selector="btnFacebookClicked:" destination="Osl-m2-3D5" eventType="touchUpInside" id="meN-cW-Tb1"/>
-                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Aw-53-kbR">
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -504,9 +526,6 @@
                                                                     <constraint firstAttribute="height" constant="24" id="yFa-Qg-1DK"/>
                                                                 </constraints>
                                                                 <state key="normal" image="ic_Instagram"/>
-                                                                <connections>
-                                                                    <action selector="btnInstaClicked:" destination="Osl-m2-3D5" eventType="touchUpInside" id="9vu-vY-eYD"/>
-                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46j-zJ-5Wd">
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -524,9 +543,6 @@
                                                                     <constraint firstAttribute="height" constant="24" id="s3X-dl-ewQ"/>
                                                                 </constraints>
                                                                 <state key="normal" image="ic_Twitter"/>
-                                                                <connections>
-                                                                    <action selector="btnTwitterClicked:" destination="Osl-m2-3D5" eventType="touchUpInside" id="Ilg-Tu-bzB"/>
-                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEH-re-ZkP">
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -544,9 +560,6 @@
                                                                     <constraint firstAttribute="height" constant="24" id="gmc-Dm-Gfp"/>
                                                                 </constraints>
                                                                 <state key="normal" image="ic_Tumblr"/>
-                                                                <connections>
-                                                                    <action selector="btnTumblrClicked:" destination="Osl-m2-3D5" eventType="touchUpInside" id="0Du-WH-eqD"/>
-                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaT-pG-ySu">
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -558,15 +571,12 @@
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UJG-wG-mHt">
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGU-Ed-kam">
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGU-Ed-kam">
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="24" id="d2E-7b-Dgk"/>
                                                                     <constraint firstAttribute="height" constant="24" id="zaL-ba-NiF"/>
                                                                 </constraints>
                                                                 <state key="normal" image="ic_V_white"/>
-                                                                <connections>
-                                                                    <action selector="btnVineClicked:" destination="Osl-m2-3D5" eventType="touchUpInside" id="9Fn-Mi-2ac"/>
-                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3K-Gg-4Yz">
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -578,15 +588,12 @@
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Aq7-TK-cmO">
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33E-OC-9Gx">
+                                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33E-OC-9Gx">
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="24" id="AYP-kH-CoZ"/>
                                                                     <constraint firstAttribute="width" constant="24" id="faG-Tw-wch"/>
                                                                 </constraints>
                                                                 <state key="normal" image="IC_pinterest_white"/>
-                                                                <connections>
-                                                                    <action selector="btnPinterestClicked:" destination="Osl-m2-3D5" eventType="touchUpInside" id="Ma3-JP-7bZ"/>
-                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuQ-xr-FMq">
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -612,6 +619,31 @@
                                                     <segue destination="jmw-tS-kqP" kind="embed" id="YZU-aj-wFu"/>
                                                 </connections>
                                             </containerView>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMb-Bm-wGi">
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jhU-Sf-iui">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="56"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="112" id="3mm-3s-3fh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jhU-Sf-iui" secondAttribute="trailing" id="8ip-rb-gcu"/>
+                                                    <constraint firstAttribute="width" constant="112" id="KZw-4G-Z49"/>
+                                                    <constraint firstItem="jhU-Sf-iui" firstAttribute="leading" secondItem="sMb-Bm-wGi" secondAttribute="leading" id="Oq2-Fj-msM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jhU-Sf-iui" secondAttribute="bottom" id="Wlr-fX-Ibm"/>
+                                                    <constraint firstItem="jhU-Sf-iui" firstAttribute="top" secondItem="sMb-Bm-wGi" secondAttribute="top" id="gbH-S9-lQC"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="56"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -620,21 +652,21 @@
                                             <constraint firstItem="aEl-lD-7fX" firstAttribute="leading" secondItem="nMU-aD-3Ki" secondAttribute="leading" constant="20" symbolic="YES" id="4qr-FE-KCO"/>
                                             <constraint firstItem="pCH-NY-hwe" firstAttribute="centerX" secondItem="nMU-aD-3Ki" secondAttribute="centerX" id="5eb-jh-aYl"/>
                                             <constraint firstAttribute="bottom" secondItem="pwB-5U-zXo" secondAttribute="bottom" id="8S6-bE-oXn"/>
-                                            <constraint firstItem="pCH-NY-hwe" firstAttribute="top" secondItem="6bp-CG-xf6" secondAttribute="bottom" constant="8" symbolic="YES" id="9D9-YG-weR"/>
                                             <constraint firstItem="pwB-5U-zXo" firstAttribute="top" secondItem="rZn-Qe-mRV" secondAttribute="bottom" id="9GL-3W-NM0"/>
+                                            <constraint firstItem="sMb-Bm-wGi" firstAttribute="centerX" secondItem="nMU-aD-3Ki" secondAttribute="centerX" id="C5d-2d-qjK"/>
                                             <constraint firstItem="tAc-Nh-4mq" firstAttribute="top" secondItem="pCH-NY-hwe" secondAttribute="bottom" multiplier="1.05" constant="8" symbolic="YES" id="DdJ-Yi-M28"/>
                                             <constraint firstItem="rZn-Qe-mRV" firstAttribute="leading" secondItem="nMU-aD-3Ki" secondAttribute="leading" id="E16-SD-7bc"/>
-                                            <constraint firstItem="6bp-CG-xf6" firstAttribute="centerX" secondItem="nMU-aD-3Ki" secondAttribute="centerX" id="F1e-rk-0Oa"/>
                                             <constraint firstAttribute="trailing" secondItem="rZn-Qe-mRV" secondAttribute="trailing" id="Gga-MB-K1J"/>
+                                            <constraint firstItem="sMb-Bm-wGi" firstAttribute="top" secondItem="nMU-aD-3Ki" secondAttribute="top" constant="20" symbolic="YES" id="OUs-NY-yhD"/>
                                             <constraint firstItem="tAc-Nh-4mq" firstAttribute="centerX" secondItem="nMU-aD-3Ki" secondAttribute="centerX" id="Sme-YF-ObU"/>
                                             <constraint firstItem="rZn-Qe-mRV" firstAttribute="top" secondItem="tAc-Nh-4mq" secondAttribute="bottom" constant="8" symbolic="YES" id="U2v-O7-QkO"/>
                                             <constraint firstItem="pwB-5U-zXo" firstAttribute="leading" secondItem="nMU-aD-3Ki" secondAttribute="leading" id="UHI-Sf-3QE"/>
                                             <constraint firstItem="RH4-I9-Fcp" firstAttribute="top" secondItem="nMU-aD-3Ki" secondAttribute="top" constant="28" id="WTr-xl-ZFr"/>
                                             <constraint firstAttribute="trailing" secondItem="pwB-5U-zXo" secondAttribute="trailing" id="ZIc-Ox-Nvp"/>
                                             <constraint firstAttribute="trailing" secondItem="arw-is-mre" secondAttribute="trailing" id="eU0-WJ-lBT"/>
-                                            <constraint firstItem="6bp-CG-xf6" firstAttribute="top" secondItem="nMU-aD-3Ki" secondAttribute="top" constant="20" id="jjR-ik-gx5"/>
                                             <constraint firstAttribute="bottom" secondItem="arw-is-mre" secondAttribute="bottom" id="l1j-Rg-bJD"/>
                                             <constraint firstItem="aEl-lD-7fX" firstAttribute="top" secondItem="nMU-aD-3Ki" secondAttribute="top" constant="28" id="oUh-DQ-Ffd"/>
+                                            <constraint firstItem="pCH-NY-hwe" firstAttribute="top" secondItem="sMb-Bm-wGi" secondAttribute="bottom" constant="8" symbolic="YES" id="rOu-Q2-9tg"/>
                                             <constraint firstAttribute="trailing" secondItem="RH4-I9-Fcp" secondAttribute="trailing" constant="20" symbolic="YES" id="wtJ-8K-1zX"/>
                                         </constraints>
                                     </view>
@@ -659,14 +691,22 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="InstaIndicator" destination="46j-zJ-5Wd" id="T7Z-wA-QpR"/>
                         <outlet property="activityIndicator" destination="R4c-OK-a8C" id="5ke-pL-FtV"/>
-                        <outlet property="fbIndicator" destination="4Aw-53-kbR" id="RYG-qz-Vqv"/>
-                        <outlet property="pinterestIndicator" destination="DuQ-xr-FMq" id="tpc-jY-6Iv"/>
-                        <outlet property="tumblrIndicator" destination="qaT-pG-ySu" id="ZbB-NG-M8f"/>
-                        <outlet property="twitterIndicator" destination="NEH-re-ZkP" id="QqV-Y5-Cg0"/>
+                        <outlet property="chartView" destination="sMb-Bm-wGi" id="AWH-Rk-n1U"/>
+                        <outlet property="graphImage" destination="jhU-Sf-iui" id="nJX-C5-eL5"/>
                         <outlet property="userName" destination="pCH-NY-hwe" id="kIE-ic-4Da"/>
-                        <outlet property="vineIndicator" destination="S3K-Gg-4Yz" id="WX4-Cz-WcP"/>
+                        <outletCollection property="btnCollection" destination="8IU-jR-d6c" collectionClass="NSMutableArray" id="ce9-Ho-3fZ"/>
+                        <outletCollection property="btnCollection" destination="OJ2-EW-DBy" collectionClass="NSMutableArray" id="W0h-bU-8NJ"/>
+                        <outletCollection property="btnCollection" destination="Lu1-ax-0tq" collectionClass="NSMutableArray" id="9vT-t4-eYs"/>
+                        <outletCollection property="btnCollection" destination="g8B-lk-ffq" collectionClass="NSMutableArray" id="6cp-r0-LqN"/>
+                        <outletCollection property="btnCollection" destination="YGU-Ed-kam" collectionClass="NSMutableArray" id="nMq-SL-9lx"/>
+                        <outletCollection property="btnCollection" destination="33E-OC-9Gx" collectionClass="NSMutableArray" id="AXS-0u-pCR"/>
+                        <outletCollection property="indicatorCollection" destination="4Aw-53-kbR" collectionClass="NSMutableArray" id="fPk-O8-eo0"/>
+                        <outletCollection property="indicatorCollection" destination="46j-zJ-5Wd" collectionClass="NSMutableArray" id="6Lp-p8-Pp5"/>
+                        <outletCollection property="indicatorCollection" destination="NEH-re-ZkP" collectionClass="NSMutableArray" id="KaF-qt-zHE"/>
+                        <outletCollection property="indicatorCollection" destination="qaT-pG-ySu" collectionClass="NSMutableArray" id="WiL-D5-LDp"/>
+                        <outletCollection property="indicatorCollection" destination="S3K-Gg-4Yz" collectionClass="NSMutableArray" id="tUK-UU-s05"/>
+                        <outletCollection property="indicatorCollection" destination="DuQ-xr-FMq" collectionClass="NSMutableArray" id="tpa-7T-H0A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0OG-Qm-SmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -709,7 +749,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="6"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.5"/>
@@ -727,28 +767,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2rj-Il-4uN" customClass="TextField" customModule="Share" customModuleProvider="target">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="ble-fZ-wzl"/>
-                                        </constraints>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                <color key="value" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4L-s1-R7C">
                                         <state key="normal" image="ic_logo_red"/>
                                     </button>
@@ -767,9 +785,6 @@
                                         <state key="normal" title="Log out ?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="btnLogoutClicked:" destination="31i-cT-XaO" eventType="touchUpInside" id="ZFu-gd-t1k"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHV-QJ-UTp">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -797,34 +812,7 @@
                                                 <real key="value" value="0.5"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                <color key="value" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mB-Pg-QmR">
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBx-Aj-PM8" customClass="TextField" customModule="Share" customModuleProvider="target">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Z2O-if-7Oh"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.5"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -893,13 +881,7 @@
                                     <constraint firstItem="Peg-Bw-W58" firstAttribute="top" secondItem="aO5-Rh-rnh" secondAttribute="bottom" constant="8" symbolic="YES" id="1rG-CU-YWZ"/>
                                     <constraint firstAttribute="trailing" secondItem="sCY-uX-4a0" secondAttribute="trailing" id="81a-qb-nNU"/>
                                     <constraint firstAttribute="trailing" secondItem="C1K-db-d4J" secondAttribute="trailing" id="8bh-XR-dxY"/>
-                                    <constraint firstItem="2rj-Il-4uN" firstAttribute="top" secondItem="EWO-xh-hkt" secondAttribute="bottom" constant="8" symbolic="YES" id="Cqt-xS-Ue2"/>
                                     <constraint firstItem="Ln5-io-oRZ" firstAttribute="centerX" secondItem="VoJ-XT-gbg" secondAttribute="centerX" id="Csx-nw-FeH"/>
-                                    <constraint firstItem="kHl-qP-DS1" firstAttribute="top" secondItem="vBx-Aj-PM8" secondAttribute="bottom" constant="10" id="DqI-J0-A9w"/>
-                                    <constraint firstItem="3mB-Pg-QmR" firstAttribute="top" secondItem="mIX-kj-afD" secondAttribute="bottom" multiplier="1.05" constant="8" symbolic="YES" id="GJK-yk-1XF"/>
-                                    <constraint firstItem="vBx-Aj-PM8" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" constant="20" symbolic="YES" id="JUD-pM-Uxz"/>
-                                    <constraint firstAttribute="trailing" secondItem="vBx-Aj-PM8" secondAttribute="trailing" constant="20" symbolic="YES" id="Jga-Zw-vkE"/>
-                                    <constraint firstAttribute="trailing" secondItem="2rj-Il-4uN" secondAttribute="trailing" constant="20" symbolic="YES" id="K80-uQ-557"/>
                                     <constraint firstAttribute="trailing" secondItem="mIX-kj-afD" secondAttribute="trailing" constant="20" symbolic="YES" id="Kc6-u0-wuC"/>
                                     <constraint firstAttribute="bottom" secondItem="VMG-fc-KDu" secondAttribute="bottom" id="LHr-TZ-dPD"/>
                                     <constraint firstItem="tHV-QJ-UTp" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" constant="20" symbolic="YES" id="LUa-S7-KLj"/>
@@ -914,15 +896,15 @@
                                     <constraint firstItem="VMG-fc-KDu" firstAttribute="top" secondItem="VoJ-XT-gbg" secondAttribute="top" id="T8f-XK-Fw9"/>
                                     <constraint firstAttribute="trailing" secondItem="EWO-xh-hkt" secondAttribute="trailing" constant="20" symbolic="YES" id="Upp-cD-SMk"/>
                                     <constraint firstAttribute="trailing" secondItem="VMG-fc-KDu" secondAttribute="trailing" id="WFQ-To-o9I"/>
-                                    <constraint firstItem="vBx-Aj-PM8" firstAttribute="top" secondItem="3mB-Pg-QmR" secondAttribute="bottom" constant="8" symbolic="YES" id="ZEV-uf-Rz9"/>
                                     <constraint firstItem="Y2e-Oa-WVo" firstAttribute="top" secondItem="VoJ-XT-gbg" secondAttribute="top" constant="28" id="agC-hl-jkl"/>
                                     <constraint firstItem="LfX-Id-nao" firstAttribute="top" secondItem="C1K-db-d4J" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="ao5-OZ-LNC"/>
                                     <constraint firstItem="mIX-kj-afD" firstAttribute="top" secondItem="LfX-Id-nao" secondAttribute="bottom" constant="8" symbolic="YES" id="bjw-WV-pKF"/>
-                                    <constraint firstItem="3mB-Pg-QmR" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" constant="20" symbolic="YES" id="dTr-Nb-cNH"/>
                                     <constraint firstItem="sCY-uX-4a0" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" id="ewJ-SQ-S7e"/>
                                     <constraint firstAttribute="trailing" secondItem="Peg-Bw-W58" secondAttribute="trailing" id="fdk-3l-uRq"/>
+                                    <constraint firstItem="xFa-7g-Plu" firstAttribute="top" secondItem="EWO-xh-hkt" secondAttribute="bottom" constant="20" id="g5a-TJ-1lX"/>
                                     <constraint firstItem="dN8-FO-ITF" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" constant="20" symbolic="YES" id="hck-bI-9Ic"/>
                                     <constraint firstAttribute="trailing" secondItem="xFa-7g-Plu" secondAttribute="trailing" constant="20" symbolic="YES" id="hn1-Td-z8c"/>
+                                    <constraint firstItem="kHl-qP-DS1" firstAttribute="top" secondItem="mIX-kj-afD" secondAttribute="bottom" constant="8" symbolic="YES" id="jVA-7G-uMp"/>
                                     <constraint firstItem="C1K-db-d4J" firstAttribute="top" secondItem="Y2e-Oa-WVo" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="jWu-9q-cS6"/>
                                     <constraint firstAttribute="trailing" secondItem="dN8-FO-ITF" secondAttribute="trailing" constant="20" symbolic="YES" id="k5R-Wc-uCD"/>
                                     <constraint firstItem="EWO-xh-hkt" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" constant="20" symbolic="YES" id="l8I-jx-spj"/>
@@ -933,11 +915,9 @@
                                     <constraint firstItem="tHV-QJ-UTp" firstAttribute="centerY" secondItem="Y2e-Oa-WVo" secondAttribute="centerY" id="niz-KK-xvc"/>
                                     <constraint firstItem="EWO-xh-hkt" firstAttribute="top" secondItem="sCY-uX-4a0" secondAttribute="bottom" multiplier="1.01" constant="8" symbolic="YES" id="plA-rN-njQ"/>
                                     <constraint firstItem="VMG-fc-KDu" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" id="qe1-cJ-4U6"/>
-                                    <constraint firstItem="xFa-7g-Plu" firstAttribute="top" secondItem="2rj-Il-4uN" secondAttribute="bottom" constant="8" symbolic="YES" id="rV7-3D-sjV"/>
                                     <constraint firstItem="bwL-zp-5x6" firstAttribute="top" secondItem="dN8-FO-ITF" secondAttribute="bottom" constant="10" id="sOw-qF-OxE"/>
                                     <constraint firstItem="Y4L-s1-R7C" firstAttribute="top" secondItem="Y2e-Oa-WVo" secondAttribute="top" id="u8N-Zv-zys"/>
                                     <constraint firstItem="LfX-Id-nao" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" constant="20" symbolic="YES" id="ug8-ZG-Dqh"/>
-                                    <constraint firstItem="2rj-Il-4uN" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" constant="20" symbolic="YES" id="vr8-J8-xV8"/>
                                     <constraint firstItem="Peg-Bw-W58" firstAttribute="leading" secondItem="VoJ-XT-gbg" secondAttribute="leading" id="yZj-1r-rwX"/>
                                 </constraints>
                             </view>
@@ -951,13 +931,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnBack" destination="tHV-QJ-UTp" id="y3j-p9-rRw"/>
                         <outlet property="btnChangePass" destination="aO5-Rh-rnh" id="MHg-qx-QaL"/>
+                        <outlet property="btnLogout" destination="Ln5-io-oRZ" id="W8G-4s-HXs"/>
                         <outlet property="btnResetGraph" destination="bwL-zp-5x6" id="3me-Yd-Koo"/>
                         <outlet property="btnSaveName" destination="kHl-qP-DS1" id="l62-V1-kjF"/>
-                        <outlet property="txtEmail" destination="vBx-Aj-PM8" id="8EP-qm-YzT"/>
-                        <outlet property="txtName" destination="mIX-kj-afD" id="5kt-zG-uVn"/>
-                        <outlet property="txtNewPass" destination="xFa-7g-Plu" id="lfV-aZ-uuR"/>
-                        <outlet property="txtOldPass" destination="2rj-Il-4uN" id="2NH-8F-W7J"/>
+                        <outletCollection property="tfCollection" destination="mIX-kj-afD" collectionClass="NSMutableArray" id="HIz-2L-Gwt"/>
+                        <outletCollection property="tfCollection" destination="xFa-7g-Plu" collectionClass="NSMutableArray" id="tKE-SM-m6v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJi-OP-4SJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1222,7 +1202,6 @@
         <image name="ic_V_white" width="24" height="24"/>
         <image name="ic_logo_1" width="152" height="152"/>
         <image name="ic_logo_red" width="36" height="36"/>
-        <image name="ic_progress_circle" width="113" height="112"/>
         <image name="ic_unchecked_mark_FB" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>

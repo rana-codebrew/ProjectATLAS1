@@ -15,6 +15,8 @@ import RxSwift
 
 struct UserTrackerModal {
     let provider: RxMoyaProvider<Share>
+    let providerWithHeader: RxMoyaProvider<Share>
+    
     func validateLogin(email:String , passwd:String) -> Observable<UserMap?>  {
         
         return self.provider
@@ -38,15 +40,22 @@ struct UserTrackerModal {
     }
     
     func updateProfile(name:String) -> Observable<UserMap?> {
-        return self.provider
+        return self.providerWithHeader
             .request(Share.UpdateProfile(name: name))
             .debug()
             .mapObjectOptional(type: UserMap.self)
     }
     
     func resetCounter() -> Observable<UserMap?> {
-        return self.provider
+        return self.providerWithHeader
             .request(Share.ResetCounter())
+            .debug()
+            .mapObjectOptional(type: UserMap.self)
+    }
+    
+    func changePassword(oldPass:String, newPass:String) -> Observable<UserMap?> {
+        return self.providerWithHeader
+            .request(Share.UpdatePassword(password: newPass))
             .debug()
             .mapObjectOptional(type: UserMap.self)
     }

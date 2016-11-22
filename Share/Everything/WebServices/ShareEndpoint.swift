@@ -19,8 +19,6 @@ enum Share {
     case UpdatePassword(password: String)
     case UpdateProfile(name: String)
     case UpdateTime(facebook:String, instagram:String, twitter:String, tumblr:String, vine:String, pinterest:String)
-    
-    
 }
 
 extension Share: TargetType {
@@ -47,6 +45,7 @@ extension Share: TargetType {
             return "updateTime"
         }
     }
+  
     var method: Moya.Method{
         switch self {
         case .Logout(),.ResetCounter(),.UpdateProfile(_),.UpdatePassword(_),.UpdateTime(_, _, _, _, _, _):
@@ -55,6 +54,7 @@ extension Share: TargetType {
             return .post
         }
     }
+  
     var parameters: [String: Any]?{
 
         let deviceTyp = "IOS"
@@ -77,60 +77,81 @@ extension Share: TargetType {
         {
             authkey = "na"
         }
+      
+      enum parameters:String
+        {
+            case name = "name"
+            case email = "email"
+            case password = "password"
+            case deviceToken = "deviceToken"
+            case deviceType = "deviceType"
+            case appVersion = "appVersion"
+            case authorization = "authorization"
+            case language = "language"
+            case facebookTime = "facebookTime"
+            case twitterTime = "twitterTime"
+            case instagramTime = "instagramTime"
+            case tumblrTime = "tumblrTime"
+            case vineTime = "vineTime"
+            case pinterestTime = "pinterestTime"
+            var stringValue: String {
+                return self.rawValue
+            }
+        }
         
         switch self {
         case .Login(let email, let passwd):
             let params: [String: Any] = [
-                "email": email as Any,
-                "password":passwd as Any,
-                "deviceType":deviceTyp as Any,
-                "deviceToken":deviceUUID as Any,
-                "appVersion": appVersion as Any,
+                parameters.email.stringValue: email as Any,
+                parameters.password.stringValue:passwd as Any,
+                parameters.deviceType.stringValue:deviceTyp as Any,
+                parameters.deviceToken.stringValue:deviceUUID as Any,
+                parameters.appVersion.stringValue: appVersion as Any,
             ]
             return params
         case .ForgotPass(let email):
             let params: [String: Any] = [
-                "email":email as Any
+                parameters.email.stringValue:email as Any
             ]
             return params
         case .GetStatus(),.Logout(),.ResetCounter():
             let params: [String: Any] = [
-                "authorization":authkey as Any
+                parameters.authorization.stringValue:authkey as Any
             ]
             return params
         case .Register(let name,let email,let passwd):
             let params: [String:Any] = [
-                "name":name as Any,
-                "email":email as Any,
-                "password":passwd as Any,
-                "deviceType":deviceTyp as Any,
-                "deviceToken":deviceUUID as Any,
-                "appVersion": appVersion as Any,
-                "language":"EN"
+                parameters.name.stringValue:name as Any,
+                parameters.email.stringValue:email as Any,
+                parameters.password.stringValue:passwd as Any,
+                parameters.deviceType.stringValue:deviceTyp as Any,
+                parameters.deviceToken.stringValue:deviceUUID as Any,
+                parameters.appVersion.stringValue: appVersion as Any,
+                parameters.language.stringValue:"EN" as Any
             ]
             return params
         case .UpdatePassword(let password):
             let params: [String:Any] = [
-                "authorization":authkey as Any,
-                "password":password
+                parameters.authorization.stringValue:authkey as Any,
+                parameters.password.stringValue:password
             ]
             return params
         case .UpdateProfile(let name):
             let params : [String: Any] = [
-                "authorization":authkey as Any,
-                "name":name as Any,
-                "deviceToken":deviceUUID as Any
+                parameters.authorization.stringValue:authkey as Any,
+                parameters.name.stringValue:name as Any,
+                parameters.deviceToken.stringValue:deviceUUID as Any
             ]
             return params
         case .UpdateTime(let facebook,let instagram,let twitter,let tumblr,let vine,let pinterest):
             let params:[String: Any] = [
-                "authorization":authkey as Any,
-                "facebookTime":facebook,
-                "instagramTime":instagram,
-                "twitterTime":twitter,
-                "tumblrTime":tumblr,
-                "vineTime":vine,
-                "pinterestTime":pinterest
+                parameters.authorization.stringValue:authkey as Any,
+                parameters.facebookTime.stringValue:facebook as Any,
+                parameters.instagramTime.stringValue:instagram as Any,
+                parameters.twitterTime.stringValue:twitter as Any,
+                parameters.tumblrTime.stringValue:tumblr as Any,
+                parameters.vineTime.stringValue:vine as Any,
+                parameters.pinterestTime.stringValue:pinterest as Any
             ]
             return params
         }
@@ -142,5 +163,16 @@ extension Share: TargetType {
     var task:Task{
         return .request
     }
+    
+    
+  
+//    var multipartBody: [MultipartFormData]? {
+//      switch self {
+//          case .Login(_, let profileImage, _):
+//            guard let data = UIImageJPEGRepresentation(profileImage, 1.0) else { return nil }
+//            return [MultipartFormData(provider: .Data(data), name: "files", mimeType:"image/jpeg", fileName: "photo.jpg")]
+//          default:
+//            return nil
+//      }
+//  }
 }
-
