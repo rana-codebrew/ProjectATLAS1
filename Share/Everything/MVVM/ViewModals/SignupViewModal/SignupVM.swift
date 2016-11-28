@@ -7,52 +7,55 @@
 //
 
 import UIKit
+import Moya
+import Moya_ModelMapper
 import RxCocoa
 import RxSwift
 
 class SignupVM {
+  
+    var emailText = Variable<String?>("")
+    var passwrodText = Variable<String?>("")
+    var nameText = Variable<String?>("")
+    let provider: RxMoyaProvider<Share>
+    let disposeBag = DisposeBag()
+    var userTracker: UserTrackerModal!
+    let SignupVCObj:SignupVC
     
-    let btnR:UIButton
-    let obj:UIViewController
-    
-    init(btnRemember: UIButton , VCObj: UIViewController) {
-        btnR=btnRemember
-        obj=VCObj
-        
+    init(signupVCObj:SignupVC) {
+        SignupVCObj=signupVCObj
+        self.provider = RxMoyaProvider<Share>()
+        self.userTracker = UserTrackerModal(provider: self.provider, providerWithHeader:self.provider)
     }
-    
-   
-    
-    func btnRememberClicked(){
-        switch btnR.tag {
-        case 0:
-            btnR.setImage(UIImage(named:"ic_check"), for: UIControlState.normal)
-            btnR.tag=1
-            break
-        case 1:
-            btnR.setImage(UIImage(named:"ic_unchecked_mark_FB"), for: UIControlState.normal)
-            btnR.tag=0
-            break
-        default:
-            break
-            
-        }
-    }
-    
+  
     func btnCreateAccountClicked()
     {
-        obj.performSegue(withIdentifier: "segueMain", sender: obj)
+      SignupVCObj.activityIndicator.isHidden=false
+      self.userTracker.registerUser(name: nameText.value!, email: emailText.value!, passwd: passwrodText.value!)
+        .subscribe { event in
+          switch event {
+          case .next(let userMap):
+            if(userMap?.UstatusCode == 201)
+            {
+              print(userMap?.UserData?.UaccessToken)
+              self.SignupVCObj.performSegue(withIdentifier: "segueMain", sender: self.SignupVCObj)
+              UserDefaults.standard.setValue(userMap?.UserData?.UaccessToken, forKey: "share_auth_token")
+              UserDefaults.standard.setValue(userMap?.UserData?.name, forKey: "share_user_name")
+              self.SignupVCObj.activityIndicator.isHidden=true
+            }
+            else
+            {
+              print(userMap?.Umessage)
+              self.SignupVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
+              self.SignupVCObj.activityIndicator.isHidden=true
+            }
+            break
+          case .error(let error):
+            print("Failed:",error.localizedDescription)
+            self.SignupVCObj.presentError(title:"Attention",message:(error.localizedDescription),okText:"OK")
+            break
+          default:break
+          }
+        }.addDisposableTo(self.disposeBag)
     }
-    
-    func btnLoginClicked()
-    {
-        _ = obj.navigationController?.popViewController(animated: true)
-    }
-    
-    func endEditing()
-    {
-        obj.view.endEditing(true)
-    }
-    
-    
 }

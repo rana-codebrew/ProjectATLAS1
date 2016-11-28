@@ -43,9 +43,9 @@ class SignupVC: UIViewController {
     
     func bindingUI()  {
       
-        tfCollection[txtType.txtName.rawValue].rx.text.bindTo((viewModel?.passwrodText)!).addDisposableTo(disposeBag)
-        tfCollection[txtType.txtEmail.rawValue].rx.text.bindTo((viewModel?.emailText)!).addDisposableTo(disposeBag)
-        tfCollection[txtType.txtPassword.rawValue].rx.text.bindTo((viewModel?.passwrodText)!).addDisposableTo(disposeBag)
+        tfCollection[txtType.txtName.rawValue].rx.text.bindTo((viewModel?.nameText)!).addDisposableTo(disposeBag)
+            tfCollection[txtType.txtEmail.rawValue].rx.text.bindTo((viewModel?.emailText)!).addDisposableTo(disposeBag)
+            tfCollection[txtType.txtPassword.rawValue].rx.text.bindTo((viewModel?.passwrodText)!).addDisposableTo(disposeBag)
       
          self.view.rx.sentMessage(#selector(UIView.touchesBegan)).subscribe (onNext:{_ in self.view.endEditing(true)}).addDisposableTo(disposeBag)
       

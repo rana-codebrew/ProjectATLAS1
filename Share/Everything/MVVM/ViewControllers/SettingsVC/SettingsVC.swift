@@ -16,54 +16,49 @@ import RxSwift
 class SettingsVC: UIViewController {
     
     let disposeBag = DisposeBag()
-    var provider: RxMoyaProvider<Share>!
-    var userTracker: UserTrackerModal!
+    var viewModel:SettingsVM?
+    enum txtType:Int {
+        case txtName = 0
+        case txtNewPass = 1
+    }
     
-    @IBOutlet weak var txtName: TextField!
-    @IBOutlet weak var txtEmail: TextField!
-    @IBOutlet weak var txtOldPass: TextField!
-    @IBOutlet weak var txtNewPass: TextField!
-
+    
     @IBOutlet weak var btnSaveName: UIButton!
     @IBOutlet weak var btnChangePass: UIButton!
     @IBOutlet weak var btnResetGraph: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet var tfCollection: [TextField]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = SettingsVM(settingsVCObj: self)
         bindingUI()
     }
     
     func bindingUI(){
-        self.provider = RxMoyaProvider<Share>()
-        self.userTracker = UserTrackerModal(provider: self.provider)
+        
+        tfCollection[txtType.txtName.rawValue].rx.text.bindTo((viewModel?.name)!).addDisposableTo(disposeBag)
+        
+        
+        tfCollection[txtType.txtNewPass.rawValue].rx.text.bindTo((viewModel?.newPassword)!).addDisposableTo(disposeBag)
         
         btnSaveName.rx.tap.subscribe(onNext: { _ in
-          //  self.activityIndicator.isHidden=false
-            self.userTracker.forgotPass(email:self.txtEmail.text!)
-                .subscribe { event in
-                    switch event {
-                    case .next(let userMap):
-                        
-                        if(userMap?.UstatusCode == 200)
-                        {
-                            self.presentError(title:"Success",message:"Check your email for password",okText:"OK")
-                          //  self.activityIndicator.isHidden=true
-                        }
-                        else
-                        {
-                            print(userMap?.Umessage)
-                            self.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
-                         //   self.activityIndicator.isHidden=true
-                        }
-                        break
-                    case .error(let error):
-                        print("Failed:",error.localizedDescription)
-                        self.presentError(title:"Attention",message:(error.localizedDescription),okText:"OK")
-                        break
-                    default:break
-                    }
-                }.addDisposableTo(self.disposeBag)
+            self.viewModel?.saveName()
+        }).addDisposableTo(disposeBag)
+        
+        btnChangePass.rx.tap.subscribe(onNext: {_ in
+            self.viewModel?.chnagePassword()
+        }).addDisposableTo(disposeBag)
+        
+        btnResetGraph.rx.tap.subscribe(onNext: {_ in
+            self.viewModel?.resetGraph()
+        }).addDisposableTo(disposeBag)
+        
+        btnLogout.rx.tap.subscribe(onNext:{_ in
+            UserDefaults.standard.setValue("0", forKey: "share_user_remember")
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }).addDisposableTo(disposeBag)
     }
 
