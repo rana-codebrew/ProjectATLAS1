@@ -10,8 +10,11 @@ import UIKit
 
 class WebViewVC: UIViewController {
 
+//MARK: - Outlets
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    //Enumeration of social urls
     enum stringURL :String
     {
         case facebook = "http://m.facebook.com"
@@ -21,10 +24,19 @@ class WebViewVC: UIViewController {
         case vine = "https://vine.co"
         case pintrest = "https://www.pinterest.com"
     }
+    
+//MARK: - DidLoad Function
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupWebView()
+    }
+    
+//MARK: - Setup Webview
+    func setupWebView() {
+        
         var url:String;
         
+        //load requested url in webview
         switch (self.restorationIdentifier! as String) {
         case  "facebook":
             url=stringURL.facebook.rawValue
@@ -48,8 +60,11 @@ class WebViewVC: UIViewController {
             url=""
             break
         }
+        
         UIWebView.loadRequest(webView)(URLRequest(url: URL(string: url)!))
     }
+    
+//MARK: - WebView Delegates
     func webViewDidStartLoad(_ webView : UIWebView) {
         activityIndicator.isHidden=false;
     }

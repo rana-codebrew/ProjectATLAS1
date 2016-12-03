@@ -13,16 +13,20 @@ import Moya
 import Moya_ModelMapper
 class SignupVC: UIViewController {
 
+//MARK: - local Variables
     let disposeBag = DisposeBag()
     var provider: RxMoyaProvider<Share>!
     var userTracker: UserTrackerModal!
     var viewModel:SignupVM?
+    
+    //Enumerating Textfields
     enum txtType:Int {
       case txtName = 0
       case txtEmail = 1
       case txtPassword = 2
     }
-  
+
+//MARK: - Outlets
     @IBOutlet var tfCollection: [UITextField]!{
         didSet{
             tfCollection.forEach{
@@ -41,6 +45,7 @@ class SignupVC: UIViewController {
         bindingUI()
     }
     
+//MARK: - BindingUI
     func bindingUI()  {
       
         tfCollection[txtType.txtName.rawValue].rx.text.bindTo((viewModel?.nameText)!).addDisposableTo(disposeBag)

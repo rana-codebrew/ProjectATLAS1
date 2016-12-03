@@ -13,7 +13,8 @@ import RxCocoa
 import RxSwift
 
 class SettingsVM{
-    
+
+//MARK: - local Variables
     let disposeBag = DisposeBag()
     var provider: RxMoyaProvider<Share>!
     var userTracker: UserTrackerModal!
@@ -22,6 +23,7 @@ class SettingsVM{
     var newPassword = Variable<String?>("")
     let SettingsVCObj:SettingsVC
     
+//MARK: - Initializing ViewModel
     init(settingsVCObj:SettingsVC){
         
         let endpointClosure = { (target: Share) -> Endpoint<Share> in
@@ -36,6 +38,7 @@ class SettingsVM{
         SettingsVCObj=settingsVCObj
     }
     
+//MARK: - Saving New Name
     func saveName() {
         self.userTracker.updateProfile(name: name.value!)
             .subscribe { event in
@@ -46,7 +49,7 @@ class SettingsVM{
                     }
                     switch(statusCode){
                         case 200:self.SettingsVCObj.presentError(title:"Success",message:(userMap?.Umessage)!,okText:"OK")
-                        default: print(userMap?.Umessage)
+                        default: print(userMap?.Umessage ?? "Success")
                     self.SettingsVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
                         
                     }
@@ -59,6 +62,7 @@ class SettingsVM{
             }.addDisposableTo(self.disposeBag)
     }
     
+//MARK: - Change Password
     func chnagePassword() {
         self.userTracker.changePassword(oldPass: oldPassword.value!, newPass: newPassword.value!)
             .subscribe { event in
@@ -71,7 +75,7 @@ class SettingsVM{
                     }
                     else
                     {
-                        print(userMap?.Umessage)
+                        print(userMap?.Umessage ?? "Success")
                         self.SettingsVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
                     }
                     break
@@ -83,7 +87,8 @@ class SettingsVM{
                 }
             }.addDisposableTo(self.disposeBag)
     }
-    
+
+//MARK: - Reset Graph
     func resetGraph() {
         self.userTracker.resetCounter()
             .subscribe { event in
@@ -96,7 +101,7 @@ class SettingsVM{
                     }
                     else
                     {
-                        print(userMap?.Umessage)
+                        print(userMap?.Umessage ?? "Error Occured")
                         self.SettingsVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
                     }
                     break

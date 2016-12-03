@@ -13,7 +13,8 @@ import RxCocoa
 import RxSwift
 
 class LoginVM {
-  
+
+//MARK: - local Variables
   var emailText = Variable<String?>("")
   var passwrodText = Variable<String?>("")
   let provider: RxMoyaProvider<Share>
@@ -21,6 +22,7 @@ class LoginVM {
   var userTracker: UserTrackerModal!
   let LoginVCObj:LoginVC
   
+//MARK: - Initializing ViewModel
   init(loginVCObj:LoginVC){
     LoginVCObj=loginVCObj
     if let remember = UserDefaults.standard.value(forKey: "share_user_remember") as? String {
@@ -33,6 +35,7 @@ class LoginVM {
     
   }
   
+//MARK: - login
   func login(){
     
     self.LoginVCObj.activityIndicator.isHidden=false
@@ -40,10 +43,9 @@ class LoginVM {
       .subscribe { event in
         switch event {
         case .next(let userMap):
-          
           if(userMap?.UstatusCode == 200)
           {
-            print(userMap?.UserData?.UaccessToken)
+            print(userMap?.UserData?.UaccessToken ?? "")
             if(self.LoginVCObj.btnRemember.tag==1)
             {
                 UserDefaults.standard.setValue("1", forKey: "share_user_remember")
@@ -59,7 +61,7 @@ class LoginVM {
           }
           else
           {
-            print(userMap?.Umessage)
+            print(userMap?.Umessage ?? "Error Occured")
             self.LoginVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
             self.LoginVCObj.activityIndicator.isHidden=true
           }
@@ -73,6 +75,7 @@ class LoginVM {
       }.addDisposableTo(self.disposeBag)
   }
   
+//MARK: - Remember me
   func btnRememberClicked(){
     switch LoginVCObj.btnRemember.tag {
     case 0:
@@ -87,13 +90,13 @@ class LoginVM {
     }
   }
   
+//MARK: - Forgot Password
   func forgotPasswordClikced(){
     self.LoginVCObj.activityIndicator.isHidden=false
     self.userTracker.forgotPass(email:self.emailText.value!)
       .subscribe { event in
         switch event {
         case .next(let userMap):
-          
           if(userMap?.UstatusCode == 200)
           {
             self.LoginVCObj.presentError(title:"Success",message:"Check your email for password",okText:"OK")
@@ -101,7 +104,7 @@ class LoginVM {
           }
           else
           {
-            print(userMap?.Umessage)
+            print(userMap?.Umessage ?? "Error Occured")
             self.LoginVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
             self.LoginVCObj.activityIndicator.isHidden=true
           }
@@ -115,6 +118,7 @@ class LoginVM {
       }.addDisposableTo(self.disposeBag)
   }
   
+//MARK: - Create Account
   func btnCreateAccClicked() {
       _ = self.LoginVCObj.performSegue(withIdentifier: "segueCreateAcc", sender: self)
   }

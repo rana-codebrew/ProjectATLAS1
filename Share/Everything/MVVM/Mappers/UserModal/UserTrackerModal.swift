@@ -17,6 +17,7 @@ struct UserTrackerModal {
     let provider: RxMoyaProvider<Share>
     let providerWithHeader: RxMoyaProvider<Share>
     
+    //MARK: - Login
     func validateLogin(email:String , passwd:String) -> Observable<UserMap?>  {
         
         return self.provider
@@ -25,6 +26,7 @@ struct UserTrackerModal {
             .mapObjectOptional(type:UserMap.self)
     }
     
+    //MARK: - Register
     func registerUser(name:String, email:String, passwd:String) -> Observable<UserMap?> {
         return self.provider
             .request(Share.Register(name: name, email: email, password: passwd))
@@ -32,6 +34,7 @@ struct UserTrackerModal {
             .mapObjectOptional(type: UserMap.self)
     }
     
+    //MARK: - ForgotPass
     func forgotPass(email:String) -> Observable<UserMap?> {
         return self.provider
             .request(Share.ForgotPass(email: email))
@@ -39,6 +42,7 @@ struct UserTrackerModal {
             .mapObjectOptional(type: UserMap.self)
     }
     
+    //MARK: - Update Profile
     func updateProfile(name:String) -> Observable<UserMap?> {
         return self.providerWithHeader
             .request(Share.UpdateProfile(name: name))
@@ -46,6 +50,7 @@ struct UserTrackerModal {
             .mapObjectOptional(type: UserMap.self)
     }
     
+    //MARK: - ResetCounter
     func resetCounter() -> Observable<UserMap?> {
         return self.providerWithHeader
             .request(Share.ResetCounter())
@@ -53,10 +58,19 @@ struct UserTrackerModal {
             .mapObjectOptional(type: UserMap.self)
     }
     
+    //MARK: - Change Password
     func changePassword(oldPass:String, newPass:String) -> Observable<UserMap?> {
         return self.providerWithHeader
             .request(Share.UpdatePassword(password: newPass))
             .debug()
             .mapObjectOptional(type: UserMap.self)
+    }
+    
+    //MARK: - Get Status
+    func getStatus() -> Observable<UserMap?> {
+        return self.providerWithHeader
+        .request(Share.GetStatus())
+        .debug()
+        .mapObjectOptional(type: UserMap.self)
     }
 }

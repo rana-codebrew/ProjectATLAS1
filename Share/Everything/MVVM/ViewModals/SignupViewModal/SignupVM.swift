@@ -13,7 +13,8 @@ import RxCocoa
 import RxSwift
 
 class SignupVM {
-  
+
+//MARK: - local Variables
     var emailText = Variable<String?>("")
     var passwrodText = Variable<String?>("")
     var nameText = Variable<String?>("")
@@ -22,12 +23,14 @@ class SignupVM {
     var userTracker: UserTrackerModal!
     let SignupVCObj:SignupVC
     
+//MARK: - Initializing ViewModel
     init(signupVCObj:SignupVC) {
         SignupVCObj=signupVCObj
         self.provider = RxMoyaProvider<Share>()
         self.userTracker = UserTrackerModal(provider: self.provider, providerWithHeader:self.provider)
     }
   
+//MARK: - Create Account
     func btnCreateAccountClicked()
     {
       SignupVCObj.activityIndicator.isHidden=false
@@ -37,7 +40,7 @@ class SignupVM {
           case .next(let userMap):
             if(userMap?.UstatusCode == 201)
             {
-              print(userMap?.UserData?.UaccessToken)
+              print(userMap?.UserData?.UaccessToken ?? "")
               self.SignupVCObj.performSegue(withIdentifier: "segueMain", sender: self.SignupVCObj)
               UserDefaults.standard.setValue(userMap?.UserData?.UaccessToken, forKey: "share_auth_token")
               UserDefaults.standard.setValue(userMap?.UserData?.name, forKey: "share_user_name")
@@ -45,7 +48,7 @@ class SignupVM {
             }
             else
             {
-              print(userMap?.Umessage)
+              print(userMap?.Umessage ?? "Error Occured")
               self.SignupVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
               self.SignupVCObj.activityIndicator.isHidden=true
             }

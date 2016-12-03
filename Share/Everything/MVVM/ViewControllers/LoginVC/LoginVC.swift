@@ -51,41 +51,37 @@ class LoginVC: UIViewController {
     
     func bindingUI(){
       
-        tfCollection[txtType.txtEmail.rawValue].rx.text.bindTo((viewModel?.emailText)!).addDisposableTo(disposeBag)
-        tfCollection[txtType.txtPassword.rawValue].rx.text.bindTo((viewModel?.passwrodText)!).addDisposableTo(disposeBag)
-      
-//        btnTap(btnTap: btnRemember, selector: (self.viewModel?.btnRememberClicked())!)
-//        btnTap(btnTap: btnCreateAccount, selector: (self.viewModel?.btnCreateAccClicked())!)
-//        btnTap(btnTap: btnResetPassword, selector: (self.viewModel?.forgotPasswordClikced())!)
-
+        //Email Textfiled Binding
+        tfCollection[txtType.txtEmail.rawValue].rx.text
+            .bindTo((viewModel?.emailText)!).addDisposableTo(disposeBag)
         
+        //Password Textfield Binding
+        tfCollection[txtType.txtPassword.rawValue].rx.text
+            .bindTo((viewModel?.passwrodText)!).addDisposableTo(disposeBag)
         
+        //Remember Button Binfing
         btnRemember.rx.tap.subscribe(onNext: { _ in
           self.viewModel?.btnRememberClicked()
         }).addDisposableTo(disposeBag)
         
+        //Create button Binding
         btnCreateAccount.rx.tap.subscribe(onNext:{ _ in
           self.viewModel?.btnCreateAccClicked()
             }).addDisposableTo(disposeBag)
         
+        //Reset Password Button Binding
         btnResetPassword.rx.tap.subscribe(onNext: { _ in
             self.viewModel?.forgotPasswordClikced()
         }).addDisposableTo(disposeBag)
         
+        //Login Button Binding
         btnLogin.rx.tap.subscribe(onNext: { _ in
           self.viewModel?.login()
           }).addDisposableTo(disposeBag)
         
+        //View touch Binding
         self.view.rx.sentMessage(#selector(UIView.touchesBegan)).subscribe (onNext:{_ in self.view.endEditing(true)}).addDisposableTo(disposeBag)
     }
-    
-    
-//    func btnTap (btnTap : UIButton,selector : ()){
-//
-//        btnTap.rx.tap.subscribe(onNext: { _ in
-//            selector
-//        }).addDisposableTo(disposeBag)
-//    }
 
 }
 

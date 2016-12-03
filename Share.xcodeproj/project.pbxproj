@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		2100653F1DE2DA2800F20880 /* SettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100653E1DE2DA2800F20880 /* SettingsVM.swift */; };
 		2123BD9F1DDAC9EE00A0D5DD /* SignupVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123BD9E1DDAC9EE00A0D5DD /* SignupVM.swift */; };
-		216C90B61DD99ED60032A425 /* IntegrateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90A01DD99ED60032A425 /* IntegrateVC.swift */; };
 		216C90B71DD99ED60032A425 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90A21DD99ED60032A425 /* LoginVC.swift */; };
 		216C90B81DD99ED60032A425 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90A61DD99ED60032A425 /* MainVC.swift */; };
 		216C90B91DD99ED60032A425 /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90AC1DD99ED60032A425 /* WebViewVC.swift */; };
-		216C90BA1DD99ED60032A425 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90AE1DD99ED60032A425 /* SearchVC.swift */; };
 		216C90BB1DD99ED60032A425 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90B01DD99ED60032A425 /* SettingsVC.swift */; };
 		216C90BC1DD99ED60032A425 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90B21DD99ED60032A425 /* SignupVC.swift */; };
 		216C90BF1DD99F2A0032A425 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90BE1DD99F2A0032A425 /* LoginVM.swift */; };
@@ -34,11 +32,9 @@
 /* Begin PBXFileReference section */
 		2100653E1DE2DA2800F20880 /* SettingsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVM.swift; sourceTree = "<group>"; };
 		2123BD9E1DDAC9EE00A0D5DD /* SignupVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVM.swift; sourceTree = "<group>"; };
-		216C90A01DD99ED60032A425 /* IntegrateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrateVC.swift; sourceTree = "<group>"; };
 		216C90A21DD99ED60032A425 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		216C90A61DD99ED60032A425 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		216C90AC1DD99ED60032A425 /* WebViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
-		216C90AE1DD99ED60032A425 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		216C90B01DD99ED60032A425 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		216C90B21DD99ED60032A425 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		216C90BE1DD99F2A0032A425 /* LoginVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
@@ -121,22 +117,12 @@
 		216C909D1DD99ED60032A425 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				216C909F1DD99ED60032A425 /* IntegrateVC */,
 				216C90A11DD99ED60032A425 /* LoginVC */,
 				216C90A31DD99ED60032A425 /* MainVC */,
-				216C90AD1DD99ED60032A425 /* SearchVC */,
 				216C90AF1DD99ED60032A425 /* SettingsVC */,
 				216C90B11DD99ED60032A425 /* SignUpVC */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		216C909F1DD99ED60032A425 /* IntegrateVC */ = {
-			isa = PBXGroup;
-			children = (
-				216C90A01DD99ED60032A425 /* IntegrateVC.swift */,
-			);
-			path = IntegrateVC;
 			sourceTree = "<group>";
 		};
 		216C90A11DD99ED60032A425 /* LoginVC */ = {
@@ -162,14 +148,6 @@
 				216C90AC1DD99ED60032A425 /* WebViewVC.swift */,
 			);
 			path = WebView;
-			sourceTree = "<group>";
-		};
-		216C90AD1DD99ED60032A425 /* SearchVC */ = {
-			isa = PBXGroup;
-			children = (
-				216C90AE1DD99ED60032A425 /* SearchVC.swift */,
-			);
-			path = SearchVC;
 			sourceTree = "<group>";
 		};
 		216C90AF1DD99ED60032A425 /* SettingsVC */ = {
@@ -352,7 +330,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = CodeBrew;
 				TargetAttributes = {
 					A82167581DB490CF00836A0C = {
@@ -458,7 +436,6 @@
 				216C90BC1DD99ED60032A425 /* SignupVC.swift in Sources */,
 				216C90BF1DD99F2A0032A425 /* LoginVM.swift in Sources */,
 				216C90BB1DD99ED60032A425 /* SettingsVC.swift in Sources */,
-				216C90B61DD99ED60032A425 /* IntegrateVC.swift in Sources */,
 				21F9569A1DDD8C7100B4171D /* UserMapper.swift in Sources */,
 				21FDEC3A1DC8727A006AE5A6 /* textField.swift in Sources */,
 				216C90B91DD99ED60032A425 /* WebViewVC.swift in Sources */,
@@ -467,7 +444,6 @@
 				216C90B71DD99ED60032A425 /* LoginVC.swift in Sources */,
 				21FDEC381DC86D70006AE5A6 /* UIView+Additions.swift in Sources */,
 				55BF5DCF1DE220FA00D84D74 /* MainVM.swift in Sources */,
-				216C90BA1DD99ED60032A425 /* SearchVC.swift in Sources */,
 				216C90B81DD99ED60032A425 /* MainVC.swift in Sources */,
 				A821675D1DB490D000836A0C /* AppDelegate.swift in Sources */,
 			);
@@ -593,7 +569,7 @@
 			baseConfigurationReference = B30B44A3EC7C1A429CB56C07 /* Pods-Share.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -607,7 +583,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dr.shareNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -617,7 +593,7 @@
 			baseConfigurationReference = DB87CD278D7865D989324AB6 /* Pods-Share.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Share/Share.entitlements;
 				DEVELOPMENT_TEAM = M55AA36S4S;
@@ -630,7 +606,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dr.shareNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
