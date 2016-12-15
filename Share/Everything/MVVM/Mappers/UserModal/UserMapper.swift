@@ -23,24 +23,27 @@ struct UserData: Mappable{
     var userDetails: Userdetails?
     var UaccessToken: String?
     var name: String?
-    
     var facebookTime:Int!
     var instagramTime:Int!
     var tumblrTime:Int!
     var twitterTime:Int!
     var pinterestTime:Int!
     var vineTime:Int!
+    var linkedInTime:Int!
+    var youtubeTime:Int!
     
     init(map: Mapper) throws{
         UaccessToken = try? map.from("accessToken")
         userDetails = (try? map.from("userDetails")) ?? nil
         name = (try? map.from("name")) ?? ""
-        facebookTime = (try? map.from("facebookTime")) ?? 0
-        instagramTime = (try? map.from("instagramTime")) ?? 0
-        tumblrTime = (try? map.from("tumblrTime")) ?? 0
-        twitterTime = (try? map.from("twitterTime")) ?? 0
-        pinterestTime = (try? map.from("pinterestTime")) ?? 0
-        vineTime = (try? map.from("vineTime")) ?? 0
+        facebookTime = (try? map.from("facebookTime")) ?? 1
+        instagramTime = (try? map.from("instagramTime")) ?? 1
+        tumblrTime = (try? map.from("tumblrTime")) ?? 1
+        twitterTime = (try? map.from("twitterTime")) ?? 1
+        pinterestTime = (try? map.from("pinterestTime")) ?? 1
+        vineTime = (try? map.from("vineTime")) ?? 1
+        linkedInTime = (try? map.from("linkeDinTime")) ?? 1
+        youtubeTime = (try? map.from("youtubeTime")) ?? 1
     }
 }
 

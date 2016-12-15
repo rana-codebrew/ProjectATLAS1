@@ -16,16 +16,20 @@ class MainVM
 
 //MARK: - local Variables
     let disposeBag = DisposeBag()
-    let viewControllerIdentifiers = ["facebook","instagram","twitter","tumblr","vine","pinterest"]
+    let viewControllerIdentifiers = ["facebook","instagram","twitter","tumblr","vine","pinterest","linkedin","youtube"]
     var facebookVC:UIViewController!
     var instagramVC:UIViewController!
     var twitterVC:UIViewController!
     var tumblrVC:UIViewController!
     var vineVC:UIViewController!
     var pinterestVC:UIViewController!
+    var linkedinVC:UIViewController!
+    var youtuveVC:UIViewController!
     let MainVCObj:MainVC
     var userTracker: UserTrackerModal!
     var provider: RxMoyaProvider<Share>!
+    let commonFunc:CommonFunction = CommonFunction()
+    var statusTimeArr = [0,0,0,0,0,0,0,0]
     
 //MARK: - Initializing ViewModel
   init(mainVCObj:MainVC) {
@@ -46,9 +50,13 @@ class MainVM
     
     pinterestVC = (MainVCObj.storyboard?.instantiateViewController(withIdentifier: viewControllerIdentifiers[5]))! as UIViewController
     
+    linkedinVC = (MainVCObj.storyboard?.instantiateViewController(withIdentifier: viewControllerIdentifiers[6]))! as UIViewController
+    
+    youtuveVC = (MainVCObj.storyboard?.instantiateViewController(withIdentifier: viewControllerIdentifiers[7]))! as UIViewController
+    
     let endpointClosure = { (target: Share) -> Endpoint<Share> in
         let defaultEndpoint = MoyaProvider.defaultEndpointMapping(target)
-        let authkey = "bearer " + (UserDefaults.standard.value(forKey: "share_auth_token") as! String)
+        let authkey = "bearer " + (UserDefaults.standard.value(forKey: userDefaultsKey.accessToken.rawValue) as! String)
         return defaultEndpoint.adding(newHttpHeaderFields: ["authorization": authkey])
     }
     
@@ -57,19 +65,30 @@ class MainVM
     
     userTracker = UserTrackerModal(provider: self.provider, providerWithHeader:providerWithHeader)
     
-    setIndicatorColor(0)
+  //  setIndicatorColor(0)
+    
+    statusTimeArr[0]=1
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(resetGraphNotification), name: NSNotification.Name(rawValue: "resetGraph"), object: nil)
+
+
   }
+    
+    @objc func resetGraphNotification(){
+        updateStatus()
+    }
   
 //MARK: - Social Button Clicked
-    func socialBtnClicked(_ btn:UIButton) {
-        changeChildView(btn.tag)
-        setIndicatorColor(btn.tag)
+    func socialBtnClicked(_ index:Int) {
+        changeChildView(index)
+    //    setIndicatorColor(btn.tag)
     }    
     
 //MARK: - Change Child View controller
   func changeChildView(_ tag:Int) {
     var newController:UIViewController!
-    
+    statusTimeArr = [0,0,0,0,0,0,0,0]
+    statusTimeArr[tag]=1
     switch (tag) {
     case 0:
       newController = facebookVC
@@ -89,6 +108,12 @@ class MainVM
     case 5:
       newController = pinterestVC
       break
+    case 6:
+        newController = linkedinVC
+        break
+    case 7:
+        newController = youtuveVC
+        break
     default:
       break
     }
@@ -106,36 +131,6 @@ class MainVM
     })
   }
   
-//MARK: - Set Indicator
-  func setIndicatorColor(_ tag:Int)
-  {
-    MainVCObj.indicatorCollection.forEach{
-      $0.backgroundColor=UIColor.white
-    }
-    
-    switch tag {
-    case 0:
-      MainVCObj.indicatorCollection[0].backgroundColor=UIColor.purple
-      break
-    case 1:
-      MainVCObj.indicatorCollection[1].backgroundColor=UIColor.cyan
-      break
-    case 2:
-      MainVCObj.indicatorCollection[2].backgroundColor=UIColor.yellow
-      break
-    case 3:
-      MainVCObj.indicatorCollection[3].backgroundColor=UIColor.green
-      break
-    case 4:
-      MainVCObj.indicatorCollection[4].backgroundColor=UIColor.orange
-      break
-    case 5:
-      MainVCObj.indicatorCollection[5].backgroundColor = UIColor.brown
-    default: break
-      
-    }
-  }
-    
 //MARK: - Updating Graph Status    
     func updateStatus() {
        
@@ -145,7 +140,7 @@ class MainVM
                 case .next(let userMap):
                     if(userMap?.UstatusCode == 200)
                     {
-                        let urlStr:String = "https://chart.googleapis.com/chart?cht=p&chs=211x211&chd=t:\((userMap?.UserData?.facebookTime)!),\((userMap?.UserData?.instagramTime)!),\((userMap?.UserData?.tumblrTime)!),\((userMap?.UserData?.twitterTime)!),\((userMap?.UserData?.pinterestTime)!),\((userMap?.UserData?.vineTime)!)"
+                        let urlStr:String = "https://chart.googleapis.com/chart?cht=p&chs=211x211&chd=t:\((userMap?.UserData?.facebookTime)!),\((userMap?.UserData?.instagramTime)!),\((userMap?.UserData?.twitterTime)!),\((userMap?.UserData?.tumblrTime)!),\((userMap?.UserData?.vineTime)!),\((userMap?.UserData?.pinterestTime)!),\((userMap?.UserData?.linkedInTime)!),\((userMap?.UserData?.youtubeTime)!)&chco=3b5998,bc2a8d,00aced,32506d,00a478,cb2027,007bb6,bb0000"
                         let url = URL(string:urlStr)
                         
                         DispatchQueue.global().async {
@@ -154,6 +149,15 @@ class MainVM
                                 self.MainVCObj.graphImage.image = UIImage(data: data!)
                             }
                         }
+                    
+                    }
+                    else if(userMap?.UstatusCode == 401)
+                    {
+                        self.MainVCObj.presentError(title:"Attention",message:"Your session is expired kindly login again",okText:"OK")
+                        self.commonFunc.logout()
+                        self.MainVCObj.statusTimer?.invalidate()
+                        _ = self.MainVCObj.navigationController?.popToRootViewController(animated: true)
+                        
                     }
                     break
                 case .error(let error):
@@ -164,5 +168,33 @@ class MainVM
                 }
             }.addDisposableTo(self.disposeBag)
 
+    }
+    
+    func sendStatus()
+    {
+
+        self.userTracker.sendStatus(facebook: "\(statusTimeArr[0])", instagram: "\(statusTimeArr[1])", twitter: "\(statusTimeArr[2])", tumblr: "\(statusTimeArr[3])", vine: "\(statusTimeArr[4])", pinterest: "\(statusTimeArr[5])", linkedin: "\(statusTimeArr[6])", youtube: "\(statusTimeArr[7])")
+            .subscribe { event in
+                switch event {
+                case .next(let userMap):
+                    print(userMap?.Umessage! ?? "no message")
+                case .error(let error):
+                    print("Failed:",error.localizedDescription)
+                    self.MainVCObj.presentError(title:"Attention",message:(error.localizedDescription),okText:"OK")
+                    break
+                default:break
+                }
+            }.addDisposableTo(self.disposeBag)
+
+    }
+    
+    func homeClicked() {
+        let selectedVC:WebViewVC = MainVCObj.childViewControllers.last! as UIViewController as! WebViewVC
+        selectedVC.setupWebView()
+    }
+    
+    func topClicked() {
+        let selectedVC:WebViewVC = MainVCObj.childViewControllers.last! as UIViewController as! WebViewVC
+        selectedVC.webView.scrollView.contentOffset = CGPoint(x:0, y:0)
     }
 }

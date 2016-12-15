@@ -16,7 +16,13 @@
 		216C90BC1DD99ED60032A425 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90B21DD99ED60032A425 /* SignupVC.swift */; };
 		216C90BF1DD99F2A0032A425 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C90BE1DD99F2A0032A425 /* LoginVM.swift */; };
 		216C90C41DD9CEE30032A425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 216C90C21DD9CEE30032A425 /* Main.storyboard */; };
+		21B5AAA21E02AE4E00509AF1 /* TermsOfServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21B5AAA11E02AE4E00509AF1 /* TermsOfServiceView.xib */; };
+		21B5AAA41E02AE6100509AF1 /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B5AAA31E02AE6100509AF1 /* TermsOfServiceView.swift */; };
 		21CCD2151DE04FB100171436 /* UIViewController+presentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCD2141DE04FB100171436 /* UIViewController+presentError.swift */; };
+		21D738721E016C0E00B591A8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D738711E016C0E00B591A8 /* Constants.swift */; };
+		21D738741E01767E00B591A8 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D738731E01767E00B591A8 /* CommonFunctions.swift */; };
+		21F297E21DFFED6900DF1FE0 /* SocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F297E11DFFED6900DF1FE0 /* SocialCell.swift */; };
+		21F297E51E00144200DF1FE0 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F297E41E00144200DF1FE0 /* StartVC.swift */; };
 		21F91B861DDF168300A96D90 /* UserTrackerModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F91B851DDF168300A96D90 /* UserTrackerModal.swift */; };
 		21F956961DDD834500B4171D /* ShareEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F956951DDD834500B4171D /* ShareEndpoint.swift */; };
 		21F9569A1DDD8C7100B4171D /* UserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F956991DDD8C7100B4171D /* UserMapper.swift */; };
@@ -39,7 +45,13 @@
 		216C90B21DD99ED60032A425 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		216C90BE1DD99F2A0032A425 /* LoginVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		216C90C31DD9CEE30032A425 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		21B5AAA11E02AE4E00509AF1 /* TermsOfServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsOfServiceView.xib; sourceTree = "<group>"; };
+		21B5AAA31E02AE6100509AF1 /* TermsOfServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
 		21CCD2141DE04FB100171436 /* UIViewController+presentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+presentError.swift"; sourceTree = "<group>"; };
+		21D738711E016C0E00B591A8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		21D738731E01767E00B591A8 /* CommonFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
+		21F297E11DFFED6900DF1FE0 /* SocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialCell.swift; sourceTree = "<group>"; };
+		21F297E41E00144200DF1FE0 /* StartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		21F91B851DDF168300A96D90 /* UserTrackerModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackerModal.swift; sourceTree = "<group>"; };
 		21F956951DDD834500B4171D /* ShareEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareEndpoint.swift; sourceTree = "<group>"; };
 		21F956991DDD8C7100B4171D /* UserMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMapper.swift; sourceTree = "<group>"; };
@@ -99,6 +111,8 @@
 				21CCD2141DE04FB100171436 /* UIViewController+presentError.swift */,
 				21FDEC371DC86D70006AE5A6 /* UIView+Additions.swift */,
 				21FDEC391DC8727A006AE5A6 /* textField.swift */,
+				21D738711E016C0E00B591A8 /* Constants.swift */,
+				21D738731E01767E00B591A8 /* CommonFunctions.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -117,6 +131,7 @@
 		216C909D1DD99ED60032A425 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				21F297E31E00141700DF1FE0 /* StartVC */,
 				216C90A11DD99ED60032A425 /* LoginVC */,
 				216C90A31DD99ED60032A425 /* MainVC */,
 				216C90AF1DD99ED60032A425 /* SettingsVC */,
@@ -138,6 +153,7 @@
 			children = (
 				216C90A61DD99ED60032A425 /* MainVC.swift */,
 				216C90AB1DD99ED60032A425 /* WebView */,
+				21F297E11DFFED6900DF1FE0 /* SocialCell.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -180,6 +196,8 @@
 		216C90B41DD99ED60032A425 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				21B5AAA11E02AE4E00509AF1 /* TermsOfServiceView.xib */,
+				21B5AAA31E02AE6100509AF1 /* TermsOfServiceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +216,14 @@
 				21F956951DDD834500B4171D /* ShareEndpoint.swift */,
 			);
 			path = WebServices;
+			sourceTree = "<group>";
+		};
+		21F297E31E00141700DF1FE0 /* StartVC */ = {
+			isa = PBXGroup;
+			children = (
+				21F297E41E00144200DF1FE0 /* StartVC.swift */,
+			);
+			path = StartVC;
 			sourceTree = "<group>";
 		};
 		21F956971DDD8BD400B4171D /* Mappers */ = {
@@ -372,6 +398,7 @@
 				216C90C41DD9CEE30032A425 /* Main.storyboard in Resources */,
 				A82167671DB490D000836A0C /* LaunchScreen.storyboard in Resources */,
 				A82167641DB490D000836A0C /* Assets.xcassets in Resources */,
+				21B5AAA21E02AE4E00509AF1 /* TermsOfServiceView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,11 +458,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2100653F1DE2DA2800F20880 /* SettingsVM.swift in Sources */,
+				21D738721E016C0E00B591A8 /* Constants.swift in Sources */,
+				21D738741E01767E00B591A8 /* CommonFunctions.swift in Sources */,
 				21F956961DDD834500B4171D /* ShareEndpoint.swift in Sources */,
 				2123BD9F1DDAC9EE00A0D5DD /* SignupVM.swift in Sources */,
+				21B5AAA41E02AE6100509AF1 /* TermsOfServiceView.swift in Sources */,
 				216C90BC1DD99ED60032A425 /* SignupVC.swift in Sources */,
 				216C90BF1DD99F2A0032A425 /* LoginVM.swift in Sources */,
 				216C90BB1DD99ED60032A425 /* SettingsVC.swift in Sources */,
+				21F297E21DFFED6900DF1FE0 /* SocialCell.swift in Sources */,
 				21F9569A1DDD8C7100B4171D /* UserMapper.swift in Sources */,
 				21FDEC3A1DC8727A006AE5A6 /* textField.swift in Sources */,
 				216C90B91DD99ED60032A425 /* WebViewVC.swift in Sources */,
@@ -446,6 +477,7 @@
 				55BF5DCF1DE220FA00D84D74 /* MainVM.swift in Sources */,
 				216C90B81DD99ED60032A425 /* MainVC.swift in Sources */,
 				A821675D1DB490D000836A0C /* AppDelegate.swift in Sources */,
+				21F297E51E00144200DF1FE0 /* StartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

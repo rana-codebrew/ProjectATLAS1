@@ -35,9 +35,9 @@ class SignupVC: UIViewController {
         }
 
     }
-    @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnCreateAccount: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var btnBack: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,12 +52,14 @@ class SignupVC: UIViewController {
             tfCollection[txtType.txtEmail.rawValue].rx.text.bindTo((viewModel?.emailText)!).addDisposableTo(disposeBag)
             tfCollection[txtType.txtPassword.rawValue].rx.text.bindTo((viewModel?.passwrodText)!).addDisposableTo(disposeBag)
       
-         self.view.rx.sentMessage(#selector(UIView.touchesBegan)).subscribe (onNext:{_ in self.view.endEditing(true)}).addDisposableTo(disposeBag)
-      
+        self.view.rx.sentMessage(#selector(UIView.touchesBegan)).subscribe (onNext:{_ in self.view.endEditing(true)}).addDisposableTo(disposeBag)
+    
          btnCreateAccount.rx.tap.subscribe(onNext:{ _ in
            self.viewModel?.btnCreateAccountClicked()
          }).addDisposableTo(disposeBag)
         
-         btnLogin.rx.tap.subscribe(onNext:{ _ in  _ = self.navigationController?.popViewController(animated: true)}).addDisposableTo(disposeBag)
+        btnBack.rx.tap.subscribe(onNext: { _ in
+            _ = self.navigationController?.popViewController(animated: true)
+        }).addDisposableTo(disposeBag)
     }
 }

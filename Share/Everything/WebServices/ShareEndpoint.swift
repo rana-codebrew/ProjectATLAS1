@@ -18,10 +18,12 @@ enum Share {
     case ResetCounter()
     case UpdatePassword(password: String)
     case UpdateProfile(name: String)
-    case UpdateTime(facebook:String, instagram:String, twitter:String, tumblr:String, vine:String, pinterest:String)
+    case UpdateTime(facebook:String, instagram:String, twitter:String, tumblr:String, vine:String, pinterest:String, linkedin:String, yotube:String)
 }
 
 extension Share: TargetType {
+    
+    //MARK: - Api urls
     var baseURL: URL{return URL(string:"http://35.160.81.51:5001/api/users")!}
     var path: String {
         switch self {
@@ -41,20 +43,22 @@ extension Share: TargetType {
             return "updatePassword"
         case .UpdateProfile(_):
             return "updateProfile"
-        case .UpdateTime(_, _, _, _, _, _):
+        case .UpdateTime(_, _, _, _, _, _, _, _):
             return "updateTime"
         }
     }
-  
+    
+    //MARK: - Http Methods
     var method: Moya.Method{
         switch self {
-        case .Logout(),.ResetCounter(),.UpdateProfile(_),.UpdatePassword(_),.UpdateTime(_, _, _, _, _, _):
+        case .Logout(),.ResetCounter(),.UpdateProfile(_),.UpdatePassword(_),.UpdateTime(_, _, _, _, _, _, _, _):
             return .put
         case .ForgotPass(_),.GetStatus(),.Login(_,_),.Register(_,_,_):
             return .post
         }
     }
   
+    //MARK: - Parameters
     var parameters: [String: Any]?{
 
         let deviceTyp = "IOS"
@@ -68,10 +72,10 @@ extension Share: TargetType {
             appVersion = "1.0"
         }
         var authkey:String
-        if  (UserDefaults.standard.value(forKey: "share_auth_token") != nil)
+        if  (UserDefaults.standard.value(forKey: userDefaultsKey.accessToken.rawValue) != nil)
         {
             
-            authkey = "bearer " + (UserDefaults.standard.value(forKey: "share_auth_token") as! String)
+            authkey = "bearer " + (UserDefaults.standard.value(forKey: userDefaultsKey.accessToken.rawValue) as! String)
         }
         else
         {
@@ -94,6 +98,8 @@ extension Share: TargetType {
             case tumblrTime = "tumblrTime"
             case vineTime = "vineTime"
             case pinterestTime = "pinterestTime"
+            case linkeDinTime = "linkeDinTime"
+            case youtubeTime = "youtubeTime"
             var stringValue: String {
                 return self.rawValue
             }
@@ -132,39 +138,45 @@ extension Share: TargetType {
             return params
         case .UpdatePassword(let password):
             let params: [String:Any] = [
-                parameters.authorization.stringValue:authkey as Any,
+                //parameters.authorization.stringValue:authkey as Any,
                 parameters.password.stringValue:password
             ]
             return params
         case .UpdateProfile(let name):
             let params : [String: Any] = [
-                parameters.authorization.stringValue:authkey as Any,
+               // parameters.authorization.stringValue:authkey as Any,
                 parameters.name.stringValue:name as Any,
                 parameters.deviceToken.stringValue:deviceUUID as Any
             ]
             return params
-        case .UpdateTime(let facebook,let instagram,let twitter,let tumblr,let vine,let pinterest):
-            let params:[String: Any] = [
-                parameters.authorization.stringValue:authkey as Any,
-                parameters.facebookTime.stringValue:facebook as Any,
-                parameters.instagramTime.stringValue:instagram as Any,
-                parameters.twitterTime.stringValue:twitter as Any,
-                parameters.tumblrTime.stringValue:tumblr as Any,
-                parameters.vineTime.stringValue:vine as Any,
-                parameters.pinterestTime.stringValue:pinterest as Any
+        case .UpdateTime(let facebook,let instagram,let twitter,let tumblr,let vine,let pinterest,let linkedin, let youtube ):
+            let params:[String: Int] = [
+                parameters.facebookTime.stringValue:Int(facebook)!,
+                parameters.instagramTime.stringValue:Int(instagram)!,
+                parameters.twitterTime.stringValue:Int(twitter)!,
+                parameters.tumblrTime.stringValue:Int(tumblr)!,
+                parameters.vineTime.stringValue:Int(vine)!,
+                parameters.pinterestTime.stringValue:Int(pinterest)!,
+                parameters.linkeDinTime.stringValue:Int(linkedin)!,
+                parameters.youtubeTime.stringValue:Int(youtube)!
             ]
             return params
         }
     }
     
+    
+    //MARK: - Sample Data
     var sampleData: Data{
             return"{ \"statusCode\":400,\"message\":\"Success\",\"data\":{\"accessToken\":\"sample123456\"}}".data(using: String.Encoding.utf8)!
     }
+    
+    //MARK: - Http Tasks
     var task:Task{
         return .request
     }
     
     
+    //MARK: - Image data
   
 //    var multipartBody: [MultipartFormData]? {
 //      switch self {

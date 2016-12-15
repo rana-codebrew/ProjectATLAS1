@@ -42,8 +42,8 @@ class SignupVM {
             {
               print(userMap?.UserData?.UaccessToken ?? "")
               self.SignupVCObj.performSegue(withIdentifier: "segueMain", sender: self.SignupVCObj)
-              UserDefaults.standard.setValue(userMap?.UserData?.UaccessToken, forKey: "share_auth_token")
-              UserDefaults.standard.setValue(userMap?.UserData?.name, forKey: "share_user_name")
+              UserDefaults.standard.setValue(userMap?.UserData?.UaccessToken, forKey: userDefaultsKey.accessToken.rawValue)
+              UserDefaults.standard.setValue(userMap?.UserData?.name, forKey: userDefaultsKey.userName.rawValue)
               self.SignupVCObj.activityIndicator.isHidden=true
             }
             else

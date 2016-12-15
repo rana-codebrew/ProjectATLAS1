@@ -25,11 +25,6 @@ class LoginVM {
 //MARK: - Initializing ViewModel
   init(loginVCObj:LoginVC){
     LoginVCObj=loginVCObj
-    if let remember = UserDefaults.standard.value(forKey: "share_user_remember") as? String {
-        if remember == "1" {
-            self.LoginVCObj.performSegue(withIdentifier: "segueMain", sender: LoginVCObj)
-        }
-    }
     self.provider = RxMoyaProvider<Share>()
     self.userTracker = UserTrackerModal(provider: self.provider, providerWithHeader:self.provider)
     
@@ -48,15 +43,13 @@ class LoginVM {
             print(userMap?.UserData?.UaccessToken ?? "")
             if(self.LoginVCObj.btnRemember.tag==1)
             {
-                UserDefaults.standard.setValue("1", forKey: "share_user_remember")
+               UserDefaults.standard.setValue(self.emailText.value, forKey: userDefaultsKey.emailid.rawValue)
+                UserDefaults.standard.setValue(self.passwrodText.value, forKey: userDefaultsKey.password.rawValue)
             }
-            else
-            {
-                UserDefaults.standard.setValue("0", forKey: "share_user_remember")
-            }
+            UserDefaults.standard.setValue("1", forKey: userDefaultsKey.remember.rawValue)
             self.LoginVCObj.performSegue(withIdentifier: "segueMain", sender: self.LoginVCObj)
-            UserDefaults.standard.setValue(userMap?.UserData?.UaccessToken, forKey: "share_auth_token")
-            UserDefaults.standard.setValue(userMap?.UserData?.userDetails?.name, forKey: "share_user_name")
+            UserDefaults.standard.setValue(userMap?.UserData?.UaccessToken, forKey: userDefaultsKey.accessToken.rawValue)
+            UserDefaults.standard.setValue(userMap?.UserData?.userDetails?.name, forKey: userDefaultsKey.userName.rawValue)
             self.LoginVCObj.activityIndicator.isHidden=true
           }
           else
@@ -79,11 +72,11 @@ class LoginVM {
   func btnRememberClicked(){
     switch LoginVCObj.btnRemember.tag {
     case 0:
-      LoginVCObj.btnRemember.setImage(UIImage(named:"ic_check"), for: UIControlState.normal)
+      LoginVCObj.btnRemember.setImage(UIImage(named:"ic_remeber_true"), for: UIControlState.normal)
       LoginVCObj.btnRemember.tag=1
       break
     case 1:
-      LoginVCObj.btnRemember.setImage(UIImage(named:"ic_unchecked_mark_FB"), for: UIControlState.normal)
+      LoginVCObj.btnRemember.setImage(UIImage(named:"ic_remeber"), for: UIControlState.normal)
       LoginVCObj.btnRemember.tag=0
       break
     default:break
@@ -118,9 +111,5 @@ class LoginVM {
       }.addDisposableTo(self.disposeBag)
   }
   
-//MARK: - Create Account
-  func btnCreateAccClicked() {
-      _ = self.LoginVCObj.performSegue(withIdentifier: "segueCreateAcc", sender: self)
-  }
 
 }

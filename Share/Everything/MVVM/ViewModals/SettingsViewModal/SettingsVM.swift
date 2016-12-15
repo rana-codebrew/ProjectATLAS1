@@ -28,7 +28,7 @@ class SettingsVM{
         
         let endpointClosure = { (target: Share) -> Endpoint<Share> in
             let defaultEndpoint = MoyaProvider.defaultEndpointMapping(target)
-            let authkey = "bearer " + (UserDefaults.standard.value(forKey: "share_auth_token") as! String)
+            let authkey = "bearer " + (UserDefaults.standard.value(forKey: userDefaultsKey.accessToken.rawValue) as! String)
             return defaultEndpoint.adding(newHttpHeaderFields: ["authorization": authkey])
         }
         let providerWithHeader = RxMoyaProvider<Share>(endpointClosure: endpointClosure)
@@ -40,6 +40,7 @@ class SettingsVM{
     
 //MARK: - Saving New Name
     func saveName() {
+        SettingsVCObj.activityIndicator.isHidden=false
         self.userTracker.updateProfile(name: name.value!)
             .subscribe { event in
                 switch event {
@@ -48,48 +49,55 @@ class SettingsVM{
                         return
                     }
                     switch(statusCode){
-                        case 200:self.SettingsVCObj.presentError(title:"Success",message:(userMap?.Umessage)!,okText:"OK")
+                        case 200:self.SettingsVCObj.presentError(title:"Success",message:"Name successfully saved",okText:"OK")
                         default: print(userMap?.Umessage ?? "Success")
                     self.SettingsVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
+                        self.SettingsVCObj.activityIndicator.isHidden=true
                         
                     }
                 case .error(let error):
                     print("Failed:",error.localizedDescription)
                     self.SettingsVCObj.presentError(title:"Attention",message:(error.localizedDescription),okText:"OK")
+                    self.SettingsVCObj.activityIndicator.isHidden=true
                     break
                 default:break
                 }
-            }.addDisposableTo(self.disposeBag)
+        }.addDisposableTo(self.disposeBag)
     }
     
 //MARK: - Change Password
     func chnagePassword() {
+        SettingsVCObj.activityIndicator.isHidden=false
         self.userTracker.changePassword(oldPass: oldPassword.value!, newPass: newPassword.value!)
             .subscribe { event in
                 switch event {
                 case .next(let userMap):
-                    
-                    if(userMap?.UstatusCode == 200)
-                    {
-                        self.SettingsVCObj.presentError(title:"Success",message:(userMap?.Umessage)!,okText:"OK")
+                    guard let statusCode = userMap?.UstatusCode else{
+                        return
                     }
-                    else
-                    {
-                        print(userMap?.Umessage ?? "Success")
+                    switch(statusCode){
+                    case 200:
+                        self.SettingsVCObj.presentError(title:"Success",message:"Password successfully changed",okText:"OK")
+                        self.SettingsVCObj.activityIndicator.isHidden=true
+                   
+                    default: print(userMap?.Umessage ?? "Success")
                         self.SettingsVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
+                    self.SettingsVCObj.activityIndicator.isHidden=true
+                        break
                     }
-                    break
                 case .error(let error):
                     print("Failed:",error.localizedDescription)
                     self.SettingsVCObj.presentError(title:"Attention",message:(error.localizedDescription),okText:"OK")
+                    self.SettingsVCObj.activityIndicator.isHidden=true
                     break
                 default:break
                 }
-            }.addDisposableTo(self.disposeBag)
+        }.addDisposableTo(self.disposeBag)
     }
 
 //MARK: - Reset Graph
     func resetGraph() {
+        SettingsVCObj.activityIndicator.isHidden=false
         self.userTracker.resetCounter()
             .subscribe { event in
                 switch event {
@@ -97,20 +105,24 @@ class SettingsVM{
                     
                     if(userMap?.UstatusCode == 200)
                     {
-                        self.SettingsVCObj.presentError(title:"Success",message:(userMap?.Umessage)!,okText:"OK")
+                        self.SettingsVCObj.presentError(title:"Success",message:"Resetting graph successful",okText:"OK")
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "resetGraph"), object: nil)
+                        self.SettingsVCObj.activityIndicator.isHidden=true
                     }
                     else
                     {
                         print(userMap?.Umessage ?? "Error Occured")
                         self.SettingsVCObj.presentError(title:"Attention",message:(userMap?.Umessage)!,okText:"OK")
+                        self.SettingsVCObj.activityIndicator.isHidden=true
                     }
                     break
                 case .error(let error):
                     print("Failed:",error.localizedDescription)
                     self.SettingsVCObj.presentError(title:"Attention",message:(error.localizedDescription),okText:"OK")
+                    self.SettingsVCObj.activityIndicator.isHidden=true
                     break
                 default:break
                 }
-            }.addDisposableTo(self.disposeBag)
+        }.addDisposableTo(self.disposeBag)
     }
 }

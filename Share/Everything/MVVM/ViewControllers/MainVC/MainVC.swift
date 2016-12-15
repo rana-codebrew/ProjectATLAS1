@@ -16,28 +16,152 @@ class MainVC: UIViewController {
     let disposeBag = DisposeBag()
     var viewModel:MainVM?
     var selectedBtn:UIButton?
-    
+    var selectedIndex:Int = 0
+    var statusTimer:Timer?
+    var imageObservavle = Variable<[UIImage]>([])
+    var selectedImage : [UIImage] = []
     
 //MARK: - Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet var btnCollection: [UIButton]!
-    @IBOutlet var indicatorCollection: [UIView]!
     @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var graphImage: UIImageView!
+    @IBOutlet weak var collView: UICollectionView!
+    @IBOutlet weak var btnHome: UIButton!
+    @IBOutlet weak var btnTop: UIButton!
+    @IBOutlet weak var graphCenterView: UIView!
+    
   
 //MARK: - didLoad Function
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MainVM(mainVCObj:self)
-      bindingUI()
+        bindingUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Updating chart data
+        if(UserDefaults.standard.value(forKey: userDefaultsKey.bgColor.rawValue) != nil ){
+            
+            let bgColor:Data = UserDefaults.standard.value(forKey: userDefaultsKey.bgColor.rawValue) as! Data
+            let color:UIColor = NSKeyedUnarchiver.unarchiveObject(with: bgColor) as! UIColor
+            self.view.backgroundColor=color
+            self.btnTop.backgroundColor=color
+            self.btnHome.backgroundColor=color
+            self.graphCenterView.backgroundColor=color
+        }
+        statusTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(updateStatus), userInfo: nil, repeats: true)
+        
+        imageObservavle.value.removeAll()
+        selectedImage.removeAll()
+        
+        var socialName:String
+        var imageData:UIImage
+        var selectedImageData:UIImage
+        
+        for index in 0..<8
+        {
+            
+            switch (index) {
+            case 0:
+                socialName = "facebookShare"
+                imageData = UIImage.init(named:"ic_facebook-2")!
+                selectedImageData =  UIImage.init(named:"ic_fb_circle")!
+            case 1:
+                socialName = "instagramShare"
+                imageData = UIImage.init(named:"ic_insta-1")!
+                selectedImageData =  UIImage.init(named:"ic_insta_circle")!
+            case 2:
+                socialName = "twitterShare"
+                imageData = UIImage.init(named:"ic_Twitter-2")!
+                selectedImageData =  UIImage.init(named:"ic_twitter_clirce")!
+            case 3:
+                socialName = "tumblrShare"
+                imageData = UIImage.init(named:"ic_tumbler")!
+                selectedImageData =  UIImage.init(named:"ic_tumbler_circle")!
+            case 4:
+                socialName = "vineShare"
+                imageData = UIImage.init(named:"ic_vine-3")!
+                selectedImageData =  UIImage.init(named:"ic_vine_circle")!
+            case 5:
+                socialName = "pinterestShare"
+                imageData = UIImage.init(named:"ic_pintrest-1")!
+                selectedImageData = UIImage.init(named:"ic_pintrest_circle")!
+            case 6:
+                socialName = "linkedinShare"
+                imageData = UIImage.init(named:"ic_linkedin-1")!
+                selectedImageData =  UIImage.init(named:"ic_linkedin_circle")!
+            case 7:
+                socialName = "youtubeShare"
+                imageData = UIImage.init(named:"ic_youtube-1")!
+                selectedImageData =  UIImage.init(named:"ic_youtube_circle")!
+            default:
+                socialName = "Share"
+                imageData = UIImage.init(named:"ic_facebook-2")!
+                selectedImageData =  UIImage.init(named:"ic_fb_circle")!
+            }
+            
+            if(UserDefaults.standard.value(forKey: socialName) != nil)
+            {
+                let value:String = UserDefaults.standard.value(forKey: socialName) as! String
+                if(value != "0")
+                {
+                    imageObservavle.value.append(imageData)
+                    selectedImage.append(selectedImageData)
+                }
+            }
+            else
+            {
+                imageObservavle.value.append(imageData)
+                selectedImage.append(selectedImageData)
+            }
+
+        }
+        
+       //collView.reloadData()
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        statusTimer?.invalidate()
+    }
+    
     
 //MARK: - UI Binding
     func bindingUI(){
         
+        
+        imageObservavle.asObservable()
+            .bindTo(collView.rx.items(cellIdentifier: "socialCell", cellType: SocialCell.self)) { (row, element, cell) in
+                
+                
+                if(row == self.selectedIndex) {
+                    cell.socialImage.image = self.selectedImage[row]
+                }
+                else {
+                    cell.socialImage.image = element
+                }
+                
+            }
+            .addDisposableTo(disposeBag)
+        
+        
+        collView.rx
+            .modelSelected(UIImage.self)
+            .subscribe(onNext:  { value in
+                if let rowIndex :Int = self.collView.indexPathsForSelectedItems?[0].row {
+                    if(self.selectedIndex==rowIndex){ return }
+                    self.viewModel?.socialBtnClicked(rowIndex)
+                    self.selectedIndex=rowIndex
+                    self.collView.reloadData()
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+        
         //Creating Pie Chart using Google static chart api
-        let url = URL(string: "https://chart.googleapis.com/chart?cht=p&chs=140x140&chd=t:0,0,0,0,0,0")
+        let url = URL(string: "https://chart.googleapis.com/chart?cht=p&chs=140x140&chd=t:0,0,0,0,0,0,0,0")
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
@@ -45,23 +169,24 @@ class MainVC: UIViewController {
             }
         }
         
-        // Updating chart data
-        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(updateStatus), userInfo: nil, repeats: true)
-        
         //Binding buttons
-        self.userName.text=(UserDefaults.standard.value(forKey: "share_user_name") as! String)
-      btnCollection.forEach{
-        let btn:UIButton = $0
-        btn.rx.tap.subscribe(onNext:{ _ in
-            self.viewModel?.socialBtnClicked(btn)
+        self.userName.text=(UserDefaults.standard.value(forKey: userDefaultsKey.userName.rawValue) as! String)
+        
+        
+        btnHome.rx.tap.subscribe(onNext: { _ in
+            self.viewModel?.homeClicked()
         }).addDisposableTo(disposeBag)
         
-      }
+        btnTop.rx.tap.subscribe(onNext: { _ in
+            self.viewModel?.topClicked()
+        }).addDisposableTo(disposeBag)
+        
     }
     
     //Update status method
     func updateStatus() {
         viewModel?.updateStatus()
+        viewModel?.sendStatus()
     }
 }
  

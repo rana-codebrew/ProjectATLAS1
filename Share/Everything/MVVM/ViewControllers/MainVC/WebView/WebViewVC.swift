@@ -17,12 +17,14 @@ class WebViewVC: UIViewController {
     //Enumeration of social urls
     enum stringURL :String
     {
-        case facebook = "http://m.facebook.com"
-        case instagram = "https://www.instagram.com/?hl=en"
-        case twitter = "https://mobile.twitter.com"
-        case tumblr = "https://www.tumblr.com"
-        case vine = "https://vine.co"
-        case pintrest = "https://www.pinterest.com"
+        case facebook   = "http://m.facebook.com"
+        case instagram  = "https://www.instagram.com/?hl=en"
+        case twitter    = "https://mobile.twitter.com"
+        case tumblr     = "https://www.tumblr.com"
+        case vine       = "https://vine.co"
+        case pintrest   = "https://www.pinterest.com"
+        case linkedin   = "https://www.linkedin.com"
+        case youtube    = "https://www.youtube.com"
     }
     
 //MARK: - DidLoad Function
@@ -56,6 +58,11 @@ class WebViewVC: UIViewController {
         case "pinterest":
             url=stringURL.pintrest.rawValue
             break
+        case "linkedin":
+            url = stringURL.linkedin.rawValue
+            break
+        case "youtube":
+            url = stringURL.youtube.rawValue
         default:
             url=""
             break
