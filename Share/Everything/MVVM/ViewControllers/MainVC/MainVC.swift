@@ -20,6 +20,7 @@ class MainVC: UIViewController {
     var statusTimer:Timer?
     var imageObservavle = Variable<[UIImage]>([])
     var selectedImage : [UIImage] = []
+    var selectedTag : [Int] = []
     
 //MARK: - Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -54,6 +55,7 @@ class MainVC: UIViewController {
         
         imageObservavle.value.removeAll()
         selectedImage.removeAll()
+        selectedTag .removeAll()
         
         var socialName:String
         var imageData:UIImage
@@ -101,6 +103,7 @@ class MainVC: UIViewController {
                 selectedImageData =  UIImage.init(named:"ic_fb_circle")!
             }
             
+            
             if(UserDefaults.standard.value(forKey: socialName) != nil)
             {
                 let value:String = UserDefaults.standard.value(forKey: socialName) as! String
@@ -108,12 +111,14 @@ class MainVC: UIViewController {
                 {
                     imageObservavle.value.append(imageData)
                     selectedImage.append(selectedImageData)
+                    selectedTag.append(index)
                 }
             }
             else
             {
                 imageObservavle.value.append(imageData)
                 selectedImage.append(selectedImageData)
+                selectedTag.append(index)
             }
 
         }
@@ -152,7 +157,8 @@ class MainVC: UIViewController {
             .subscribe(onNext:  { value in
                 if let rowIndex :Int = self.collView.indexPathsForSelectedItems?[0].row {
                     if(self.selectedIndex==rowIndex){ return }
-                    self.viewModel?.socialBtnClicked(rowIndex)
+                    let selectedVal:Int = self.selectedTag[rowIndex]
+                    self.viewModel?.socialBtnClicked(selectedVal)
                     self.selectedIndex=rowIndex
                     self.collView.reloadData()
                 }
@@ -187,6 +193,29 @@ class MainVC: UIViewController {
     func updateStatus() {
         viewModel?.updateStatus()
         viewModel?.sendStatus()
+    }
+}
+
+extension MainVC : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        
+        let cellCount = CGFloat(imageObservavle.value.count)
+        
+        if cellCount > 0 {
+            let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+            let cellWidth = flowLayout.itemSize.width + flowLayout.minimumInteritemSpacing
+            let totalCellWidth = cellWidth*cellCount + 5*(cellCount-1)
+            let contentWidth = collectionView.frame.size.width - collectionView.contentInset.left - collectionView.contentInset.right
+            
+            if (totalCellWidth < contentWidth) {
+                let padding = (contentWidth - totalCellWidth) / 2.0
+                return UIEdgeInsetsMake(0, padding, 0, padding)
+            }
+        }
+        
+        return UIEdgeInsets.zero
     }
 }
  

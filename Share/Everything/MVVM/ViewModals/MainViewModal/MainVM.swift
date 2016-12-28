@@ -190,7 +190,10 @@ class MainVM
     
     func homeClicked() {
         let selectedVC:WebViewVC = MainVCObj.childViewControllers.last! as UIViewController as! WebViewVC
-        selectedVC.setupWebView()
+        if(selectedVC.webView.canGoBack)
+        {
+            selectedVC.webView.goBack()
+        }
     }
     
     func topClicked() {

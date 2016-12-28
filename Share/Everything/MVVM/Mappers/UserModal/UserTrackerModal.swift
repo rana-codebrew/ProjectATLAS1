@@ -74,7 +74,7 @@ struct UserTrackerModal {
         .mapObjectOptional(type: UserMap.self)
     }
     
-    //MARK: - Get Status
+    //MARK: - send Status
     func sendStatus(facebook:String, instagram:String, twitter:String, tumblr:String, vine:String, pinterest:String, linkedin:String,youtube:String) -> Observable<UserMap?> {
         return self.providerWithHeader
             .request(Share.UpdateTime(facebook: facebook, instagram: instagram, twitter: twitter, tumblr: tumblr, vine: vine, pinterest: pinterest, linkedin: linkedin, yotube: youtube))
