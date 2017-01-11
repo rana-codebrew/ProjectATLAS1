@@ -74,7 +74,6 @@ class LoginVC: UIViewController {
             .bindTo((viewModel?.passwrodText)!).addDisposableTo(disposeBag)
         
         
-        
         //Remember Button Binfing
         btnRemember.rx.tap.subscribe(onNext: { _ in
           self.viewModel?.btnRememberClicked()

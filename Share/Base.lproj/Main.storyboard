@@ -692,7 +692,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnL-Kl-WxY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="159.5" height="38"/>
                                                                 <color key="backgroundColor" red="0.16078431369999999" green="0.19215686269999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <state key="normal" image="ic_home"/>
+                                                                <state key="normal" image="ic_back-1"/>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhH-Ou-ebu">
                                                                 <rect key="frame" x="160.5" y="0.0" width="159.5" height="38"/>
@@ -1825,10 +1825,10 @@
         <image name="ic_Twitter_w" width="24" height="24"/>
         <image name="ic_Vine_w" width="24" height="24"/>
         <image name="ic_back" width="24" height="24"/>
+        <image name="ic_back-1" width="24" height="24"/>
         <image name="ic_check" width="22" height="22"/>
         <image name="ic_dd_down" width="24" height="24"/>
         <image name="ic_dd_up" width="24" height="24"/>
-        <image name="ic_home" width="24" height="24"/>
         <image name="ic_linkedin_w" width="24" height="24"/>
         <image name="ic_pintrst_w" width="24" height="24"/>
         <image name="ic_remeber" width="16" height="16"/>
