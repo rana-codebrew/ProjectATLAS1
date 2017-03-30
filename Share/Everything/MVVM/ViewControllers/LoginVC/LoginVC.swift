@@ -51,8 +51,6 @@ class LoginVC: UIViewController {
     override func viewDidLayoutSubviews() {
         termsOfServiceView = TermsOfServiceView.instanceFromNib()
         termsOfServiceView?.frame = self.view.frame
-        
-        
     }
 
   
@@ -99,6 +97,8 @@ class LoginVC: UIViewController {
         
         
         termsOfService.rx.tap.subscribe(onNext: { _ in
+           self.termsOfServiceView?.loadView()
+
         self.view.addSubview(self.termsOfServiceView!)
         self.view.bringSubview(toFront: self.termsOfServiceView!)
         }).addDisposableTo(disposeBag)
